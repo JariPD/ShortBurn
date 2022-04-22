@@ -22,6 +22,8 @@ public class Sway : MonoBehaviour
         Quaternion targetRot = rotX * rotY;
 
         //rotate
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRot, smooth * Time.deltaTime);
+        if (!PlayerInteraction.instance.objectSelected)
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRot, smooth * Time.deltaTime);
+
     }
 }

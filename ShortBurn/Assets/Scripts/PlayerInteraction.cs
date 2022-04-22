@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public static PlayerInteraction instance;
+
     [Header("References")]
     [SerializeField] private FirstPersonController controller;
     [SerializeField] private MouseLook mouseLook;
@@ -14,7 +16,12 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float rayDistance;
     [SerializeField] private float rotSpeed;
 
-    private bool objectSelected;
+    public bool objectSelected;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Update()
     {

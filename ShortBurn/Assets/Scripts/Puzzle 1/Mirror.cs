@@ -7,6 +7,10 @@ public class Mirror : MonoBehaviour
     [SerializeField] private float rayDistance = 25f;
     [SerializeField] private LayerMask layer;
 
+    private GameObject rune;
+
+    [SerializeField][Range(0, 5)] private int mirrorIndex;
+
     void Update()
     {
         RaycastHit hit;
@@ -22,10 +26,41 @@ public class Mirror : MonoBehaviour
 
         if (Physics.Raycast(origin, direction, out hit, rayDistance, layer)) //draws a ray going forwards from the object
         {
-            print("Hit something");
-            Debug.Log(hit.transform.gameObject.name);  //debugs the name of the object you hit
-            //do check if light hit rune
-            //emission of rune ^
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Rune"))
+            {
+                if (mirrorIndex == runeIndex.instance.runeIndexx)
+                {
+                    Debug.Log(hit.transform.gameObject.name);
+                }
+
+
+
+
+                if (hit.transform.gameObject.name == "Rune 1")
+                {
+
+                }
+
+                if (hit.transform.gameObject.name == "Rune 2")
+                {
+
+                }
+
+                if (hit.transform.gameObject.name == "Rune 3")
+                {
+
+                }
+
+                if (hit.transform.gameObject.name == "Rune 4")
+                {
+
+                }
+
+                if (hit.transform.gameObject.name == "Rune 5")
+                {
+
+                }
+            }
         }
     }
 
