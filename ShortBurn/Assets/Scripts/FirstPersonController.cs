@@ -13,7 +13,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float gravity = -9.81f;
 
     [Header("GroundCheck Settings")]
-    [SerializeField] private Transform GroundCheck;
+    [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundDistance = 0.4f;
     [SerializeField] private LayerMask layer;
     private bool isGrounded;
@@ -24,7 +24,7 @@ public class FirstPersonController : MonoBehaviour
     void Update()
     {
         //Groundcheck
-        isGrounded = Physics.CheckSphere(GroundCheck.position, groundDistance, layer);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, layer);
 
         //reset velocity
         if (isGrounded && velocity.y <0)

@@ -429,6 +429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 167147024}
+  - component: {fileID: 167147025}
   m_Layer: 0
   m_Name: Puzzle 1
   m_TagString: Untagged
@@ -460,6 +461,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &167147025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167147023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224205dd761ef2042a2c6d2e2be1b527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmountActive: 0
 --- !u!1 &176754431
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayDistance: 10
-  layer:
+  layerToHit:
     serializedVersion: 2
     m_Bits: 128
   mirrorIndex: 2
@@ -1007,7 +1021,7 @@ MonoBehaviour:
   speed: 12
   jumpHeight: 3
   gravity: -19.62
-  GroundCheck: {fileID: 2001634296}
+  groundCheck: {fileID: 2001634296}
   groundDistance: 0.4
   layer:
     serializedVersion: 2
@@ -1240,7 +1254,6 @@ GameObject:
   - component: {fileID: 845872446}
   - component: {fileID: 845872445}
   - component: {fileID: 845872444}
-  - component: {fileID: 845872448}
   m_Layer: 7
   m_Name: Rune 1
   m_TagString: Untagged
@@ -1280,7 +1293,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 022eab37bd09d2b40ba330a097d7ad63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1324,19 +1337,6 @@ Transform:
   m_Father: {fileID: 167147024}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &845872448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845872443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 672677e47bfedd04a87f0719bc64d90a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runeIndexx: 1
 --- !u!1 &866128636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1395,6 @@ GameObject:
   - component: {fileID: 917784045}
   - component: {fileID: 917784044}
   - component: {fileID: 917784043}
-  - component: {fileID: 917784047}
   m_Layer: 7
   m_Name: Rune 3
   m_TagString: Untagged
@@ -1435,7 +1434,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 022eab37bd09d2b40ba330a097d7ad63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1479,19 +1478,6 @@ Transform:
   m_Father: {fileID: 167147024}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &917784047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917784042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 672677e47bfedd04a87f0719bc64d90a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runeIndexx: 3
 --- !u!1 &995046254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,7 +1725,6 @@ GameObject:
   - component: {fileID: 1031881542}
   - component: {fileID: 1031881541}
   - component: {fileID: 1031881540}
-  - component: {fileID: 1031881544}
   m_Layer: 7
   m_Name: Rune 5
   m_TagString: Untagged
@@ -1823,19 +1808,6 @@ Transform:
   m_Father: {fileID: 167147024}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1031881544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1031881539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 672677e47bfedd04a87f0719bc64d90a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runeIndexx: 5
 --- !u!1 &1132458164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,7 +1857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayDistance: 10
-  layer:
+  layerToHit:
     serializedVersion: 2
     m_Bits: 128
   mirrorIndex: 5
@@ -2567,7 +2539,6 @@ GameObject:
   - component: {fileID: 1524492270}
   - component: {fileID: 1524492269}
   - component: {fileID: 1524492268}
-  - component: {fileID: 1524492272}
   m_Layer: 7
   m_Name: Rune 4
   m_TagString: Untagged
@@ -2607,7 +2578,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 022eab37bd09d2b40ba330a097d7ad63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2651,19 +2622,6 @@ Transform:
   m_Father: {fileID: 167147024}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1524492272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524492267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 672677e47bfedd04a87f0719bc64d90a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runeIndexx: 4
 --- !u!1 &1545775991
 GameObject:
   m_ObjectHideFlags: 0
@@ -3028,7 +2986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayDistance: 10
-  layer:
+  layerToHit:
     serializedVersion: 2
     m_Bits: 128
   mirrorIndex: 4
@@ -3629,14 +3587,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807924432}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.08729342, y: 0.21758454, z: 0.019542167, w: 0.97193366}
   m_LocalPosition: {x: -6.07, y: -0.9847323, z: -3.46446}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 137770183}
   m_Father: {fileID: 167147024}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -10.264, y: 25.237, z: 0}
 --- !u!114 &1807924437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3650,7 +3608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayDistance: 10
-  layer:
+  layerToHit:
     serializedVersion: 2
     m_Bits: 128
   mirrorIndex: 1
@@ -3682,7 +3640,6 @@ GameObject:
   - component: {fileID: 1827708970}
   - component: {fileID: 1827708969}
   - component: {fileID: 1827708968}
-  - component: {fileID: 1827708972}
   m_Layer: 7
   m_Name: Rune 2
   m_TagString: Untagged
@@ -3722,7 +3679,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 022eab37bd09d2b40ba330a097d7ad63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3766,19 +3723,6 @@ Transform:
   m_Father: {fileID: 167147024}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1827708972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827708967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 672677e47bfedd04a87f0719bc64d90a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runeIndexx: 2
 --- !u!1 &1870528134
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,7 +3772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayDistance: 10
-  layer:
+  layerToHit:
     serializedVersion: 2
     m_Bits: 128
   mirrorIndex: 3
