@@ -15,7 +15,7 @@ public class Mirror : MonoBehaviour
     [Header("Rune Settings")]
     private GameObject rune;
 
-    private bool allowedToRunCourotine = true;
+    private bool coroutineAllowed = true;
 
     void Update()
     {
@@ -28,28 +28,39 @@ public class Mirror : MonoBehaviour
             {
                 for (int i = 1; i <= 5; i++)
                 {
-                    if (mirrorIndex == i && hit.transform.gameObject.name == $"Rune {i}" && allowedToRunCourotine)
+                    //checks if index is the same as the object that is hit if so start GetRune coroutine
+                    if (mirrorIndex == i && hit.transform.gameObject.name == $"Rune {i}" && coroutineAllowed)
                         StartCoroutine(GetRune());
                 }
             }
         }
     }
 
+    /// <summary>
+    /// Coroutine to get rune object and put it in a empty gameobject and changes the color of the object that is hit
+    /// </summary>
+    /// <returns></returns>
     IEnumerator GetRune()
     {
-        allowedToRunCourotine = false;
-         
+        //bool to make sure coroutine is not started multiple times
+        coroutineAllowed = false;
+        
+        //puts the hit object into an empty GameObject
         rune = hit.transform.gameObject;
+
+        //changes the material of the object
         rune.GetComponent<Renderer>().material.color = new Color(127, 0, 255);
 
+        //increases the amount of active runes
         PuzzleManager.instance.AmountActive++;
-
-        Debug.Log(hit.transform.gameObject.name);
 
         yield return null;
     }
 
 
+    /// <summary>
+    /// Editor only, Gizmos for raycast
+    /// </summary>
 #if (UNITY_EDITOR) 
     private void OnDrawGizmos()
     {

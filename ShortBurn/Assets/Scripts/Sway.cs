@@ -8,7 +8,6 @@ public class Sway : MonoBehaviour
     [SerializeField] private float smooth;
     [SerializeField] private float swayMultiplier;
 
-    // Update is called once per frame
     void Update()
     {
         //input

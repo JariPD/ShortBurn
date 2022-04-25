@@ -6,9 +6,8 @@ public class PuzzleManager : MonoBehaviour
 {
     public static PuzzleManager instance;
 
-
     public int AmountActive = 0;
-    private bool allowedToRunCourotine = true;
+    private bool coroutineAllowed = true;
 
     private void Awake()
     {
@@ -17,15 +16,18 @@ public class PuzzleManager : MonoBehaviour
 
     private void Update()
     {
-        if (AmountActive >= 5 && allowedToRunCourotine)
+        //win condition
+        if (AmountActive >= 5 && coroutineAllowed)
             StartCoroutine(Win());
     }
 
     IEnumerator Win()
     {
-        allowedToRunCourotine = false;
+        coroutineAllowed = false;
 
         print("Puzzle complete");
+
+        //do something
 
         yield return null;
     }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -25,6 +24,10 @@ public class Rotater : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// coroutine to rotate the wheel and increase the number
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator RotateWheel()
     {
         coroutineAllowed = false;

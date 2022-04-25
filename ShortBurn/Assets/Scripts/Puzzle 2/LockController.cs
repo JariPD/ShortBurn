@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LockController : MonoBehaviour
@@ -8,11 +6,21 @@ public class LockController : MonoBehaviour
 
     void Start()
     {
+        //sets the starting combination
         result = new int[] { 5, 5, 5 };
+
+        //sets the correct combination
         correctCombination = new int[] { 6, 6, 6 };
+
+        //checks results
         Rotater.Rotated += CheckResults;
     }
 
+    /// <summary>
+    /// Function to check for lock results
+    /// </summary>
+    /// <param name="wheelName"></param>
+    /// <param name="number"></param>
     private void CheckResults(string wheelName, int number)
     {
         switch (wheelName)
@@ -30,9 +38,12 @@ public class LockController : MonoBehaviour
                 break;
         }
 
+        //checks if the combination is correct
         if (result[0] == correctCombination[0] && result[1] == correctCombination[1] && result[2] == correctCombination[2])
         {
             print("Puzzle Complete");
+
+            //do something
         }
     }
 
