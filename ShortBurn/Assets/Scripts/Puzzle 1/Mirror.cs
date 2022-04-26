@@ -5,9 +5,10 @@ using UnityEngine;
 public class Mirror : MonoBehaviour
 {
     [Header("Ray Settings")]
-    [SerializeField] private float rayDistance = 25f;
+    [SerializeField] private float rayDistance = 50f;
     [SerializeField] private LayerMask layerToHit;
     private RaycastHit hit;
+    private bool noHit = false;
 
     [Header("Mirror Settings")]
     [SerializeField] private int mirrorIndex;
@@ -15,7 +16,8 @@ public class Mirror : MonoBehaviour
     [Header("Rune Settings")]
     private GameObject rune;
 
-    private bool coroutineAllowed = true;
+    private bool getRune = true;
+    private bool removeRune = false;
 
     void Update()
     {
@@ -24,27 +26,32 @@ public class Mirror : MonoBehaviour
 
         if (Physics.Raycast(origin, direction, out hit, rayDistance, layerToHit)) //draws a ray going forwards from the object
         {
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Rune")) //checks if the object is in the correct layer
+            noHit = false;
+
+            for (int i = 1; i <= 5; i++)
             {
-                for (int i = 1; i <= 5; i++)
-                {
-                    //checks if index is the same as the object that is hit if so start GetRune coroutine
-                    if (mirrorIndex == i && hit.transform.gameObject.name == $"Rune {i}" && coroutineAllowed)
-                        StartCoroutine(GetRune());
-                }
+                //checks if index is the same as the object that is hit if so start GetRune coroutine
+                if (mirrorIndex == i && hit.transform.gameObject.name == $"Rune {i}" && getRune)
+                    StartCoroutine(GetRune());
             }
         }
+        else
+            noHit = true;
+
+        if (noHit && removeRune)
+            StartCoroutine(RemoveRune());
     }
 
     /// <summary>
-    /// Coroutine to get rune object and put it in a empty gameobject and changes the color of the object that is hit
+    /// Coroutine that puts hit object into an empty gameobject
     /// </summary>
     /// <returns></returns>
     IEnumerator GetRune()
     {
-        //bool to make sure coroutine is not started multiple times
-        coroutineAllowed = false;
-        
+        //bools to make sure coroutines is not started multiple times
+        getRune = false;
+        removeRune = true;
+
         //puts the hit object into an empty GameObject
         rune = hit.transform.gameObject;
 
@@ -57,11 +64,25 @@ public class Mirror : MonoBehaviour
         yield return null;
     }
 
+    IEnumerator RemoveRune()
+    {
+        //bools to make sure coroutines is not started multiple times
+        removeRune = false;
+        getRune = true;
+
+        //sets rune back to default if no longer selected
+        rune.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+
+        //decreases the amount of active runes
+        PuzzleManager.instance.AmountActive--;
+
+        yield return null;
+    }
 
     /// <summary>
     /// Editor only, Gizmos for raycast
     /// </summary>
-#if (UNITY_EDITOR) 
+#if (UNITY_EDITOR)
     private void OnDrawGizmos()
     {
         Vector3 dir = transform.TransformDirection(Vector3.forward) * rayDistance;

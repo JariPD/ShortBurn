@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
     [SerializeField] private float rayDistance = 10;
-    [SerializeField] private LayerMask layer;
+    [SerializeField] private LayerMask layerToHit;
 
     void Update()
     {
         RaycastHit hit;
-        Vector3 origin = transform.position;
+        Vector3 origin = transform.position;                               //origin of the ray
         Vector3 direction = transform.TransformDirection(Vector3.forward); //direction for the ray
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            if (Physics.Raycast(origin, direction, out hit, rayDistance, layer)) //draws a ray going forwards from the object
+            if (Physics.Raycast(origin, direction, out hit, rayDistance, layerToHit)) //draws a ray going forwards from the object
             {
-
+                //play beam vfx
             }
         }
 

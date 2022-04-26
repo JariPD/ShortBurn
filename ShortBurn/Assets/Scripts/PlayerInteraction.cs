@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public static PlayerInteraction instance;
 
     [Header("References")]
     [SerializeField] private FirstPersonController controller;
@@ -12,16 +11,11 @@ public class PlayerInteraction : MonoBehaviour
     private GameObject pickedUpObject;
 
     [Header("Settings")]
-    [SerializeField] private LayerMask layer;
+    [SerializeField] private LayerMask layerToHit;
     [SerializeField] private float rayDistance;
     [SerializeField] private float rotSpeed;
 
     public bool objectSelected;
-
-    private void Awake()
-    {
-        instance = this;
-    }
 
     void Update()
     {
@@ -29,7 +23,7 @@ public class PlayerInteraction : MonoBehaviour
         Vector3 origin = transform.position;                               //origin of the ray
         Vector3 direction = transform.TransformDirection(Vector3.forward); //direction for the ray
 
-        if (Physics.Raycast(origin, direction, out hit, rayDistance, layer)) //draws a ray going forwards from the object
+        if (Physics.Raycast(origin, direction, out hit, rayDistance, layerToHit)) //draws a ray going forwards from the object
         {
             //Debug.Log(hit.transform.gameObject.name);
 
@@ -66,9 +60,8 @@ public class PlayerInteraction : MonoBehaviour
             float mouseY = (Input.GetAxis("Mouse Y") * rotSpeed * Time.deltaTime * Mathf.Rad2Deg);
 
             //turns object
-            //pickedUpObject.transform.Rotate(Vector3.forward, mouseY);
-            //pickedUpObject.transform.Rotate(Vector3.up, mouseX);
-            pickedUpObject.transform.Rotate(mouseX, mouseY, 0);
+            pickedUpObject.transform.Rotate(Vector3.right, mouseY);
+            pickedUpObject.transform.Rotate(Vector3.up, mouseX);
 
             //unselect object
             if (Input.GetKeyDown(KeyCode.Mouse1))
