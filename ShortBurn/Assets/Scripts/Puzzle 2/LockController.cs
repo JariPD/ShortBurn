@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class LockController : MonoBehaviour
 {
-    private int[] result, correctCombination;
+    private int[] result;
+    [SerializeField] private int [] correctCombination; //set the correct combination in the inspector :D
 
     void Start()
     {
@@ -10,7 +11,7 @@ public class LockController : MonoBehaviour
         result = new int[] { 5, 5, 5 };
 
         //sets the correct combination
-        correctCombination = new int[] { 6, 6, 6 };
+        //correctCombination = new int[] { 6, 7, 8 };
 
         //checks results
         Rotater.Rotated += CheckResults;

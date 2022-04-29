@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Rune 1
+  - Mirror
   layers:
   - Default
   - TransparentFX
@@ -12,7 +12,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Mirror
+  - Interactable
   - Rune
   - PostProcessing
   - Not in Reflection

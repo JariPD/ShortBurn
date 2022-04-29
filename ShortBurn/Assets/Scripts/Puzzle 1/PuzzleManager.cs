@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PuzzleManager : MonoBehaviour
@@ -27,7 +26,9 @@ public class PuzzleManager : MonoBehaviour
 
         print("Puzzle complete");
 
-        //do something
+        //open door to next area
+        //turn on text that say "Go to the middle of the circle"
+        //launch player towards door
 
         yield return null;
     }
