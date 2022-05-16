@@ -4,6 +4,7 @@ public class Hand : MonoBehaviour
 {
     [SerializeField] private float rayDistance = 10;
     [SerializeField] private LayerMask layerToHit;
+    [SerializeField] private CameraShake cameraShake;
 
     void Update()
     {
@@ -13,6 +14,9 @@ public class Hand : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
+            //play screenshake effect
+            StartCoroutine(cameraShake.Shake(0.15f, .05f));
+            
             if (Physics.Raycast(origin, direction, out hit, rayDistance, layerToHit)) //draws a ray going forwards from the object
             {
                 //play beam vfx

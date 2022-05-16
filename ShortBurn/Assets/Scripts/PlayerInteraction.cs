@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class PlayerInteraction : MonoBehaviour
     [Header("References")]
     [SerializeField] private FirstPersonController controller;
     [SerializeField] private MouseLook mouseLook;
+    [SerializeField] private CameraZoom cameraZoom;
     private GameObject pickedUpObject;
 
     [Header("Settings")]
@@ -13,7 +15,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float rayDistance;
     [SerializeField] private float rotSpeed;
 
-    public bool objectSelected;
+    public bool MirrorSelected;
+    public bool ZoomSelected;
 
     void Update()
     {
@@ -30,7 +33,11 @@ public class PlayerInteraction : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                objectSelected = true;
+                if (hit.transform.gameObject.CompareTag("Mirror"))
+                    MirrorSelected = true;
+
+                if (hit.transform.gameObject.CompareTag("Zoom"))
+                    ZoomSelected = true;
             }
             else
             {
@@ -41,7 +48,7 @@ public class PlayerInteraction : MonoBehaviour
         else
             UIManager.instance.isInteracting = false;
 
-        if (objectSelected)
+        if (MirrorSelected)
         {
             //lock player movement and camera
             controller.LockMovement();
@@ -63,12 +70,23 @@ public class PlayerInteraction : MonoBehaviour
 
             //unselect object
             if (Input.GetKeyDown(KeyCode.Mouse1))
-                objectSelected = false;
+                MirrorSelected = false;
+        }
+
+        if (ZoomSelected)
+        {
+            print("Zoom is selected");
+
+            cameraZoom.Zoom();
+
+            //unselect object
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+                ZoomSelected = false;
         }
     }
-    
+
 #if (UNITY_EDITOR)
-private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Vector3 dir = transform.TransformDirection(Vector3.forward) * rayDistance;
 
