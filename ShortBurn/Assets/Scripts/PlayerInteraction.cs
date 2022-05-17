@@ -75,13 +75,18 @@ public class PlayerInteraction : MonoBehaviour
 
         if (ZoomSelected)
         {
-            print("Zoom is selected");
+            //lock player movement and camera
+            controller.LockMovement();
+            mouseLook.LockCamera();
 
             cameraZoom.Zoom();
 
             //unselect object
             if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
                 ZoomSelected = false;
+                cameraZoom.Reset();
+            }
         }
     }
 

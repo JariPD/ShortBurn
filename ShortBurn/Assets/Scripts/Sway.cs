@@ -22,7 +22,7 @@ public class Sway : MonoBehaviour
         Quaternion targetRot = rotX * rotY;
 
         //rotate
-        if (!playerInteraction.MirrorSelected)
+        if (!playerInteraction.MirrorSelected && !playerInteraction.ZoomSelected)
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRot, smooth * Time.deltaTime);
 
     }
