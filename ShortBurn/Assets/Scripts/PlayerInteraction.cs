@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -8,7 +7,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private FirstPersonController controller;
     [SerializeField] private MouseLook mouseLook;
     [SerializeField] private CameraZoom cameraZoom;
-    private GameObject pickedUpObject;
+    private GameObject mirrorObject;
+    private GameObject runeObject;
 
     [Header("Settings")]
     [SerializeField] private LayerMask layerToHit;
@@ -17,6 +17,7 @@ public class PlayerInteraction : MonoBehaviour
 
     public bool MirrorSelected;
     public bool ZoomSelected;
+    public bool RunePressed;
 
     void Update()
     {
@@ -29,6 +30,9 @@ public class PlayerInteraction : MonoBehaviour
             //Debug.Log(hit.transform.gameObject.name);
 
             //enables interact text
+            if (hit.transform.gameObject.CompareTag("Untagged"))
+                return;
+
             UIManager.instance.isInteracting = true;
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -38,6 +42,9 @@ public class PlayerInteraction : MonoBehaviour
 
                 if (hit.transform.gameObject.CompareTag("Zoom"))
                     ZoomSelected = true;
+
+                if (hit.transform.gameObject.CompareTag("Rune"))
+                    RunePressed = true;
             }
             else
             {
@@ -58,15 +65,15 @@ public class PlayerInteraction : MonoBehaviour
             UIManager.instance.isInteracting = false;
 
             //sets reference to object you selected
-            pickedUpObject = hit.transform.gameObject;
+            mirrorObject = hit.transform.gameObject;
 
             //turn input
             float mouseX = (Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime * Mathf.Rad2Deg);
             float mouseY = (Input.GetAxis("Mouse Y") * rotSpeed * Time.deltaTime * Mathf.Rad2Deg);
 
             //turns object
-            pickedUpObject.transform.Rotate(Vector3.right, mouseY);
-            pickedUpObject.transform.Rotate(Vector3.up, mouseX);
+            mirrorObject.transform.Rotate(Vector3.right, mouseY);
+            mirrorObject.transform.Rotate(Vector3.up, mouseX);
 
             //unselect object
             if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -79,6 +86,7 @@ public class PlayerInteraction : MonoBehaviour
             controller.LockMovement();
             mouseLook.LockCamera();
 
+            //zooms the camera to another position
             cameraZoom.Zoom();
 
             //unselect object
@@ -88,6 +96,31 @@ public class PlayerInteraction : MonoBehaviour
                 cameraZoom.Reset();
             }
         }
+
+        if (RunePressed)
+        {
+            //sets reference to object you pressed
+            runeObject = hit.transform.gameObject;
+
+            Rune();
+        }
+    }
+
+    private void Rune()
+    {
+        //increases the rune count
+        RuneManager.instance.AmountPressed++;
+
+        //removes tag from object so it cant be pressed again
+        runeObject.tag = "Untagged";
+
+        //change runes appearance to indicate it being pressed
+        runeObject.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+
+        //turns the ineracting text off
+        UIManager.instance.isInteracting = false;
+
+        RunePressed = false;
     }
 
 #if (UNITY_EDITOR)

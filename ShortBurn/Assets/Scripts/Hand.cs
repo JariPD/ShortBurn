@@ -16,14 +16,14 @@ public class Hand : MonoBehaviour
         {
             //play screenshake effect
             StartCoroutine(cameraShake.Shake(0.15f, .05f));
-            
+
             if (Physics.Raycast(origin, direction, out hit, rayDistance, layerToHit)) //draws a ray going forwards from the object
             {
                 //play beam vfx
             }
         }
 
-        
+
     }
 
 #if (UNITY_EDITOR)
