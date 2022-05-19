@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class CameraZoom : MonoBehaviour
 {
-    [SerializeField] private GameObject hand;
 
     [SerializeField] private Vector3 targetPos;
     [SerializeField] private Quaternion targetRot;
     [SerializeField] private float speed = 1.5f;
+    [SerializeField] private float rotSpeed = 1.5f;
+
     private Vector3 origin;
     private Quaternion rot;
 
@@ -22,26 +23,28 @@ public class CameraZoom : MonoBehaviour
     {
         if (activateZoom)
         {
-            hand.gameObject.SetActive(false);
+            //smoothly moves the camera's position to allocated position
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, speed * Time.deltaTime);
-            transform.localRotation = targetRot;
-            //transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRot, speed * Time.deltaTime);
-
+            transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRot, rotSpeed * Time.deltaTime);
         }
     }
 
+    /// <summary>
+    /// function to zoom camera to allocated position
+    /// </summary>
     public void Zoom()
     {
         activateZoom = true;
     }
 
+    /// <summary>
+    /// function to reset camera's position
+    /// </summary>
     public void Reset()
     {
         activateZoom = false;
-        hand.gameObject.SetActive(true);
 
-
-        transform.localPosition = Vector3.Slerp(targetPos, origin, speed);
-        transform.localRotation = Quaternion.Slerp(targetRot, rot, speed);
+        transform.localPosition = origin;
+        transform.localRotation = rot;
     }
 }

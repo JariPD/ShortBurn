@@ -10,7 +10,7 @@ public class Hand : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 origin = transform.position;                               //origin of the ray
-        Vector3 direction = transform.TransformDirection(Vector3.forward); //direction for the ray
+        Vector3 direction = transform.TransformDirection(Vector3.up); //direction for the ray
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -20,6 +20,9 @@ public class Hand : MonoBehaviour
             if (Physics.Raycast(origin, direction, out hit, rayDistance, layerToHit)) //draws a ray going forwards from the object
             {
                 //play beam vfx
+
+                if (hit.transform.gameObject.CompareTag("Plank"))
+                    FindObjectOfType<PlankPuzzle>().MoveObject = true;
             }
         }
 

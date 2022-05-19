@@ -7,6 +7,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private FirstPersonController controller;
     [SerializeField] private MouseLook mouseLook;
     [SerializeField] private CameraZoom cameraZoom;
+    [SerializeField] private GameObject hand;
     private GameObject mirrorObject;
     private GameObject runeObject;
 
@@ -27,12 +28,9 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Physics.Raycast(origin, direction, out hit, rayDistance, layerToHit)) //draws a ray going forwards from the object
         {
-            //Debug.Log(hit.transform.gameObject.name);
-
-            //enables interact text
+            //enables interact text if object is not untagged
             if (hit.transform.gameObject.CompareTag("Untagged"))
                 return;
-
             UIManager.instance.isInteracting = true;
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -49,17 +47,22 @@ public class PlayerInteraction : MonoBehaviour
             else
             {
                 controller.UnlockMovement();
-                mouseLook.UnlockCamera();
+                mouseLook.enabled = true;
             }
         }
         else
             UIManager.instance.isInteracting = false;
 
+
         if (MirrorSelected)
         {
+            //sets hand GameObject to off
+            hand.gameObject.SetActive(false);
+
             //lock player movement and camera
             controller.LockMovement();
-            mouseLook.LockCamera();
+            mouseLook.enabled = false;
+
 
             //turns interact text off
             UIManager.instance.isInteracting = false;
@@ -77,14 +80,22 @@ public class PlayerInteraction : MonoBehaviour
 
             //unselect object
             if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
                 MirrorSelected = false;
+
+                //turns hand GameObject back on
+                hand.gameObject.SetActive(true);
+            }
         }
 
         if (ZoomSelected)
         {
+            //sets hand GameObject to off
+            hand.gameObject.SetActive(false);
+
             //lock player movement and camera
             controller.LockMovement();
-            mouseLook.LockCamera();
+            mouseLook.enabled = false;
 
             //zooms the camera to another position
             cameraZoom.Zoom();
@@ -93,7 +104,15 @@ public class PlayerInteraction : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 ZoomSelected = false;
+
+                //resets camera's zoom back to player
                 cameraZoom.Reset();
+
+                //turns camera movement back on
+                mouseLook.enabled = true;
+
+                //turns hand GameObject back on
+                hand.gameObject.SetActive(true);
             }
         }
 
@@ -106,6 +125,9 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// function to increase amount of runes pressed and handles disabling them when pressed
+    /// </summary>
     private void Rune()
     {
         //increases the rune count

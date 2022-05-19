@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseLook : MonoBehaviour
@@ -8,7 +6,6 @@ public class MouseLook : MonoBehaviour
     [SerializeField] private Transform playerBody;
 
     private float xRot = 0f;
-    private bool isLocked;
 
     void Start()
     {
@@ -26,20 +23,7 @@ public class MouseLook : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
-
-        if (isLocked)
-            mouseSensitivity = 0;
-        else
-            mouseSensitivity = 100;
     }
 
-    public void LockCamera()
-    {
-        isLocked = true;
-    }
 
-    public void UnlockCamera()
-    {
-        isLocked = false;
-    }
 }
