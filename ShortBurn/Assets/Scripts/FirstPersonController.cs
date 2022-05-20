@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FirstPersonController : MonoBehaviour
@@ -27,7 +25,7 @@ public class FirstPersonController : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, layer);
 
         //reset velocity
-        if (isGrounded && velocity.y <0)
+        if (isGrounded && velocity.y < 0)
             velocity.y = -2f;
 
         //input
@@ -52,7 +50,7 @@ public class FirstPersonController : MonoBehaviour
         if (isLocked)
             speed = 0;
         else
-            speed = 12;
+            speed = 2;
     }
 
     public void LockMovement()

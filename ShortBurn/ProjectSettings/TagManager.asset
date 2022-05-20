@@ -8,6 +8,7 @@ TagManager:
   - Zoom
   - Rune
   - Plank
+  - Brick
   layers:
   - Default
   - TransparentFX
