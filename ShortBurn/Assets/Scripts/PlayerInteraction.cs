@@ -98,7 +98,7 @@ public class PlayerInteraction : MonoBehaviour
                 MirrorSelected = false;
 
                 cameraZoom.Reset();
-                
+
                 //turns hand GameObject back on
                 hand.gameObject.SetActive(true);
             }
