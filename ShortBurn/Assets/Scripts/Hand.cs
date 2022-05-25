@@ -25,7 +25,11 @@ public class Hand : MonoBehaviour
                     hit.transform.gameObject.GetComponent<PlankPuzzle>().MoveObject = true;
 
                 if (hit.transform.gameObject.CompareTag("Brick"))
-                    hit.transform.gameObject.GetComponent<BrickPuzzle>().MoveObject = true;
+                    hit.transform.gameObject.GetComponent<MoveObjectPuzzle>().MoveObject = true;
+
+                if (hit.transform.gameObject.CompareTag("DryRack"))
+                    hit.transform.gameObject.GetComponent<MoveObjectPuzzle>().MoveObject = true;
+
             }
         }
     }

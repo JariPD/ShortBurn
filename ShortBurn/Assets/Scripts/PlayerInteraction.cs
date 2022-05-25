@@ -15,10 +15,21 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private LayerMask layerToHit;
     [SerializeField] private float rayDistance;
     [SerializeField] private float rotSpeed;
+    [SerializeField] private Vector3 camTargetPos;
+    [SerializeField] private Quaternion camTargetRot;
+
+    private Vector3 camOriginPos;
+    private Quaternion camOriginRot;
 
     public bool MirrorSelected;
     public bool ZoomSelected;
     public bool RunePressed;
+
+    private void Start()
+    {
+        //camOriginPos = cam.transform.position;
+        //camOriginRot = cam.transform.rotation;
+    }
 
     void Update()
     {
@@ -63,6 +74,9 @@ public class PlayerInteraction : MonoBehaviour
             controller.LockMovement();
             mouseLook.enabled = false;
 
+            //move camera up
+            //transform.localPosition = camTargetPos;
+            //transform.localRotation = camTargetRot;
 
             //turns interact text off
             UIManager.instance.isInteracting = false;
@@ -83,6 +97,8 @@ public class PlayerInteraction : MonoBehaviour
             {
                 MirrorSelected = false;
 
+                cameraZoom.Reset();
+                
                 //turns hand GameObject back on
                 hand.gameObject.SetActive(true);
             }

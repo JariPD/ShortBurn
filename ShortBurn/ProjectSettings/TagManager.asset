@@ -9,6 +9,7 @@ TagManager:
   - Rune
   - Plank
   - Brick
+  - DryRack
   layers:
   - Default
   - TransparentFX
