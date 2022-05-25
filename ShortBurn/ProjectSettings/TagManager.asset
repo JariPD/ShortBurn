@@ -10,6 +10,7 @@ TagManager:
   - Plank
   - Brick
   - DryRack
+  - player
   layers:
   - Default
   - TransparentFX

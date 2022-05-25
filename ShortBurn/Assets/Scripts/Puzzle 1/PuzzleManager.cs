@@ -6,8 +6,13 @@ public class PuzzleManager : MonoBehaviour
     public static PuzzleManager instance;
 
     public int AmountActive = 0;
+
+    [Header("Settings")]
     [SerializeField] private MoveObjectPuzzle door;
+   
+
     private bool coroutineAllowed = true;
+    private float timer;
 
     private void Awake()
     {
@@ -34,5 +39,18 @@ public class PuzzleManager : MonoBehaviour
         //launch player towards door
 
         yield return null;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("player") && AmountActive == 5)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= 3)
+            {
+                MovePlayerToNextArea.instance.MoveObject = true;
+            }
+        }
     }
 }
