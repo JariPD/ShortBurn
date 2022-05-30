@@ -6,9 +6,12 @@ public class Hand : MonoBehaviour
     //[SerializeField] private LayerMask layerToHit;
     [SerializeField] private CameraShake cameraShake;
 
+    private RaycastHit hit;
+    private float boilTimer = 0;
+    private float burnTimer = 0;
+
     void Update()
     {
-        RaycastHit hit;
         Vector3 origin = transform.position;                               //origin of the ray
         Vector3 direction = transform.TransformDirection(Vector3.up); //direction for the ray
 
@@ -29,6 +32,30 @@ public class Hand : MonoBehaviour
 
                 if (hit.transform.gameObject.CompareTag("DryRack"))
                     hit.transform.gameObject.GetComponent<MoveObjectPuzzle>().MoveObject = true;
+
+                if (hit.transform.gameObject.CompareTag("Rope"))
+                {
+                    burnTimer += Time.deltaTime;
+
+                    if (burnTimer >= 2)
+                    {
+                        hit.transform.gameObject.GetComponentInParent<WindowPuzzle>().CloseWindow = true;
+
+                        burnTimer = 0;
+                    }
+                }
+
+                if (hit.transform.gameObject.CompareTag("Kettle"))
+                {
+                    boilTimer += Time.deltaTime;
+
+                    if (boilTimer >= 3)
+                    {
+                        hit.transform.gameObject.GetComponent<BoilingPuzzle>().LaunchPlayer = true;
+
+                        boilTimer = 0;
+                    }
+                }
 
             }
         }

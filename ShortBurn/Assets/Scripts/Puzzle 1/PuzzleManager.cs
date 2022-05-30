@@ -35,8 +35,11 @@ public class PuzzleManager : MonoBehaviour
         //open door to next area
         door.MoveObject = true;
 
+        //set the next checkpoint for respawning
+        SpawnPoints.instance.CheckPoint += 1;
+
         //turn on text that say "Go to the middle of the circle"
-        //launch player towards door
+        UIManager.instance.Puzzle1Win();
 
         yield return null;
     }
@@ -49,7 +52,7 @@ public class PuzzleManager : MonoBehaviour
 
             if (timer >= 3)
             {
-                MovePlayerToNextArea.instance.MoveObject = true;
+                MovePlayerToNextArea.instance.MovePlayer = true;
             }
         }
     }

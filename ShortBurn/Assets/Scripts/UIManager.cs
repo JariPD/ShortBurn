@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
 
     public bool isInteracting = false;
     [SerializeField] private TextMeshProUGUI interactText;
+    [SerializeField] private TextMeshProUGUI moveToCenterText;
+
 
     private void Awake()
     {
@@ -22,5 +24,19 @@ public class UIManager : MonoBehaviour
         else
             interactText.gameObject.SetActive(false);
 
+    }
+
+    public void Puzzle1Win()
+    {
+        StartCoroutine(MoveToCenter());
+    }
+
+    IEnumerator MoveToCenter()
+    {
+        moveToCenterText.enabled = true;
+
+        yield return new WaitForSeconds(4.5f);
+
+        moveToCenterText.enabled = false;
     }
 }

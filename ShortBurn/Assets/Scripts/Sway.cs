@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class Sway : MonoBehaviour
 {
-    [Header("Reference")]
-    [SerializeField] private PlayerInteraction playerInteraction;
-
     [Header("Settings")]
     [SerializeField] private float smooth;
     [SerializeField] private float swayMultiplier;
@@ -22,8 +19,7 @@ public class Sway : MonoBehaviour
         Quaternion targetRot = rotX * rotY;
 
         //rotate
-        if (!playerInteraction.MirrorSelected && !playerInteraction.ZoomSelected)
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRot, smooth * Time.deltaTime);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRot, smooth * Time.deltaTime);
 
     }
 }

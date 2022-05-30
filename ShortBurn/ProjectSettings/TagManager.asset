@@ -11,6 +11,8 @@ TagManager:
   - Brick
   - DryRack
   - player
+  - Kettle
+  - Rope
   layers:
   - Default
   - TransparentFX

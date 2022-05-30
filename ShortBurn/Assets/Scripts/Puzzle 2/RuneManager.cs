@@ -13,7 +13,6 @@ public class RuneManager : MonoBehaviour
         instance = this;
     }
 
-
     private void Update()
     {
         if (AmountPressed == 5)
