@@ -6,7 +6,6 @@ public class SpawnPoints : MonoBehaviour
     public static SpawnPoints instance;
 
     [Header("References")]
-    [SerializeField] private GameObject player;
     [SerializeField] private Animator anim;
 
     [Header("Settings")]
@@ -57,6 +56,6 @@ public class SpawnPoints : MonoBehaviour
         LockPlayer.instance.sway.enabled = true;
 
         //sets players new position
-        player.transform.position = currentSpawnPoint.position;
+        transform.position = currentSpawnPoint.position;
     }
 }
