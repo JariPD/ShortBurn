@@ -5,6 +5,7 @@ public class Hand : MonoBehaviour
     [SerializeField] private float rayDistance = 10;
     //[SerializeField] private LayerMask layerToHit;
     [SerializeField] private CameraShake cameraShake;
+    [SerializeField] private GameObject beam;
 
     private RaycastHit hit;
     private float boilTimer = 0;
@@ -23,6 +24,8 @@ public class Hand : MonoBehaviour
             if (Physics.Raycast(origin, direction, out hit, rayDistance)) //draws a ray going forwards from the object
             {
                 //play beam vfx
+                //beam template
+                beam.SetActive(true);
 
                 if (hit.transform.gameObject.CompareTag("Plank"))
                     hit.transform.gameObject.GetComponent<PlankPuzzle>().MoveObject = true;
@@ -56,9 +59,10 @@ public class Hand : MonoBehaviour
                         boilTimer = 0;
                     }
                 }
-
             }
         }
+        else
+            beam.SetActive(false);
     }
 
 #if (UNITY_EDITOR)

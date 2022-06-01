@@ -16,6 +16,5 @@ public class MoveObjectPuzzle : MonoBehaviour
             transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRot, rotSpeed * Time.deltaTime);
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, moveSpeed * Time.deltaTime);
         }
-
     }
 }

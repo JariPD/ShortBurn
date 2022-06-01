@@ -11,7 +11,7 @@ public class BoilingPuzzle : MonoBehaviour
     {
         if(LaunchPlayer)
         {
-            LockPlayer.instance.fpsController.enabled = false;
+            LockPlayer.instance.FpsController.enabled = false;
 
             player.transform.position = Vector3.MoveTowards(player.transform.position, targetPos, moveSpeed * Time.deltaTime);
         }
@@ -20,7 +20,7 @@ public class BoilingPuzzle : MonoBehaviour
         {
             LaunchPlayer = false;
 
-            LockPlayer.instance.fpsController.enabled = true;
+            LockPlayer.instance.FpsController.enabled = true;
         }
     }
 }

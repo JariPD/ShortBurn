@@ -8,6 +8,8 @@ public class RuneManager : MonoBehaviour
 
     public int AmountPressed;
 
+    [SerializeField] private GameObject winPanel;
+
     private void Awake()
     {
         instance = this;
@@ -23,9 +25,18 @@ public class RuneManager : MonoBehaviour
 
     IEnumerator Win()
     {
+        //locks player
+        LockPlayer.instance.LockAll();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         //play win cutscene
 
         print("Win");
+
+        //activates win panel
+        winPanel.SetActive(true);
 
         yield return null;
     }

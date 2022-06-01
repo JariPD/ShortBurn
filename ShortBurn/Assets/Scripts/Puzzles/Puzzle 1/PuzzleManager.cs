@@ -5,9 +5,10 @@ public class PuzzleManager : MonoBehaviour
 {
     public static PuzzleManager instance;
 
-    public int AmountActive = 0;
+    [SerializeField] private CameraShake camShake;
 
     [Header("Settings")]
+    public int AmountActive = 0;
     [SerializeField] private MoveObjectPuzzle door;
 
 
@@ -35,6 +36,9 @@ public class PuzzleManager : MonoBehaviour
         //open door to next area
         door.MoveObject = true;
 
+        //screen shake to indicate something is moving
+        StartCoroutine(camShake.Shake(5.4f, 0.015f));
+
         //set the next checkpoint for respawning
         SpawnPoints.instance.CheckPoint += 1;
 
@@ -52,6 +56,7 @@ public class PuzzleManager : MonoBehaviour
 
             if (timer >= 3)
             {
+                timer = 0;
                 MovePlayerToNextArea.instance.MovePlayer = true;
             }
         }

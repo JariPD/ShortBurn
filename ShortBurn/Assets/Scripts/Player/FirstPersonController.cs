@@ -16,7 +16,6 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private LayerMask layer;
     private bool isGrounded;
 
-    private bool isLocked = false;
     private Vector3 velocity;
 
     void Update()
@@ -45,22 +44,5 @@ public class FirstPersonController : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
-
-        //locks the playermovement if the bool is true
-        if (isLocked)
-            speed = 0;
-        else
-            speed = 2;
     }
-
-    public void LockMovement()
-    {
-        isLocked = true;
-    }
-
-    public void UnlockMovement()
-    {
-        isLocked = false;
-    }
-
 }

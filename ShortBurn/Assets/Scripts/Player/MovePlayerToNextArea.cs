@@ -20,7 +20,7 @@ public class MovePlayerToNextArea : MonoBehaviour
     {
         if (MovePlayer)
         {
-            LockPlayer.instance.fpsController.enabled = false;
+            LockPlayer.instance.FpsController.enabled = false;
 
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
         }
@@ -29,7 +29,7 @@ public class MovePlayerToNextArea : MonoBehaviour
         {
             MovePlayer = false;
 
-            LockPlayer.instance.fpsController.enabled = true;
+            LockPlayer.instance.FpsController.enabled = true;
         }
 
 

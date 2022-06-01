@@ -8,21 +8,23 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
 
     public bool isInteracting = false;
-    [SerializeField] private TextMeshProUGUI interactText;
     [SerializeField] private TextMeshProUGUI moveToCenterText;
+    private Canvas interactCanvas;
 
 
     private void Awake()
     {
         instance = this;
+
+        interactCanvas = GetComponentInChildren<Canvas>();
     }
 
     void Update()
     {
         if (isInteracting)
-            interactText.gameObject.SetActive(true);
+            interactCanvas.enabled = true;
         else
-            interactText.gameObject.SetActive(false);
+            interactCanvas.enabled = false;
 
     }
 

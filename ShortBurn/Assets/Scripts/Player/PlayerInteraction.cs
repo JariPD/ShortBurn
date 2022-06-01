@@ -4,8 +4,6 @@ public class PlayerInteraction : MonoBehaviour
 {
 
     [Header("References")]
-    [SerializeField] private FirstPersonController controller;
-    [SerializeField] private MouseLook mouseLook;
     [SerializeField] private CameraZoom cameraZoom;
     [SerializeField] private GameObject hand;
     private GameObject mirrorObject;
@@ -51,13 +49,12 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
             {
-                controller.UnlockMovement();
-                mouseLook.enabled = true;
+                LockPlayer.instance.FpsController.enabled = true;
+                LockPlayer.instance.MouseLook.enabled = true;
             }
         }
         else
             UIManager.instance.isInteracting = false;
-
 
         if (mirrorObject)
         {
@@ -65,8 +62,8 @@ public class PlayerInteraction : MonoBehaviour
             hand.gameObject.SetActive(false);
 
             //lock player movement and camera
-            controller.LockMovement();
-            mouseLook.enabled = false;
+            LockPlayer.instance.FpsController.enabled = false;
+            LockPlayer.instance.MouseLook.enabled = false;
 
             //move camera up
             transform.localPosition = camTargetPos;
@@ -84,13 +81,13 @@ public class PlayerInteraction : MonoBehaviour
             mirrorObject.transform.Rotate(Vector3.up, mouseX);
 
             //unselect object
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Escape))
             {
                 //remove reference to mirrorObject
                 mirrorObject = null;
 
                 //unlocks camera
-                mouseLook.enabled = true;
+                LockPlayer.instance.MouseLook.enabled = true;
 
                 cameraZoom.Reset();
 
@@ -105,14 +102,14 @@ public class PlayerInteraction : MonoBehaviour
             hand.gameObject.SetActive(false);
 
             //lock player movement and camera
-            controller.LockMovement();
-            mouseLook.enabled = false;
+            LockPlayer.instance.FpsController.enabled = false;
+            LockPlayer.instance.MouseLook.enabled = false;
 
             //zooms the camera to another position
             cameraZoom.Zoom();
 
             //unselect object
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Escape))
             {
                 ZoomSelected = false;
 
@@ -120,7 +117,7 @@ public class PlayerInteraction : MonoBehaviour
                 cameraZoom.Reset();
 
                 //turns camera movement back on
-                mouseLook.enabled = true;
+                LockPlayer.instance.MouseLook.enabled = true;
 
                 //turns hand GameObject back on
                 hand.gameObject.SetActive(true);
