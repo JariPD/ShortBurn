@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5745683965800846409}
   - component: {fileID: 2579377603022434992}
   - component: {fileID: 1881438347972305738}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Roundedcloset
   m_TagString: Untagged
   m_Icon: {fileID: 0}

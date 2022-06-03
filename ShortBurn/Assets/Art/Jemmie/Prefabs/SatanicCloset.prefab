@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5153335419468965935}
   - component: {fileID: 7873015887934893538}
   - component: {fileID: 6809773171353189625}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SatanicCloset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
