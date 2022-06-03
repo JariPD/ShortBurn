@@ -7,6 +7,7 @@ public class LockPlayer : MonoBehaviour
     public FirstPersonController FpsController;
     public MouseLook MouseLook;
     public Sway Sway;
+    public Hand Hand;
     public CharacterController CharacterController;
 
     private void Awake()
@@ -19,6 +20,7 @@ public class LockPlayer : MonoBehaviour
         FpsController.enabled = false;
         MouseLook.enabled = false;
         Sway.enabled = false;
+        Hand.enabled = false;
         CharacterController.enabled = false;
     }
 
@@ -27,6 +29,7 @@ public class LockPlayer : MonoBehaviour
         FpsController.enabled = true;
         MouseLook.enabled = true;
         Sway.enabled = true;
+        Hand.enabled = true;
         CharacterController.enabled = true;
     }
 }

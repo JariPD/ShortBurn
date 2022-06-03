@@ -31,7 +31,7 @@ public class PlayerInteraction : MonoBehaviour
             //enables interact text if object is not untagged
             if (hit.transform.gameObject.CompareTag("Untagged"))
                 return;
-            UIManager.instance.isInteracting = true;
+            UIManager.instance.IsInteracting = true;
 
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -47,14 +47,9 @@ public class PlayerInteraction : MonoBehaviour
                 if (hit.transform.gameObject.CompareTag("Rune"))
                     RunePressed = true;
             }
-            else
-            {
-                LockPlayer.instance.FpsController.enabled = true;
-                LockPlayer.instance.MouseLook.enabled = true;
-            }
         }
         else
-            UIManager.instance.isInteracting = false;
+            UIManager.instance.IsInteracting = false;
 
         if (mirrorObject)
         {
@@ -69,8 +64,9 @@ public class PlayerInteraction : MonoBehaviour
             transform.localPosition = camTargetPos;
             transform.localRotation = camTargetRot;
 
-            //turns interact text off
-            UIManager.instance.isInteracting = false;
+            //turns interact text off and exit interact on
+            UIManager.instance.IsInteracting = false;
+            UIManager.instance.ObjectSelected = true;
 
             //turn input
             float mouseX = (Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime * Mathf.Rad2Deg);
@@ -81,14 +77,18 @@ public class PlayerInteraction : MonoBehaviour
             mirrorObject.transform.Rotate(Vector3.up, mouseX);
 
             //unselect object
-            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 //remove reference to mirrorObject
                 mirrorObject = null;
 
-                //unlocks camera
-                LockPlayer.instance.MouseLook.enabled = true;
+                //turns off the exit interact text
+                UIManager.instance.ObjectSelected = false;
 
+                //unlocks camera
+                LockPlayer.instance.UnlockAll();
+
+                //resets camera
                 cameraZoom.Reset();
 
                 //turns hand GameObject back on
@@ -109,7 +109,7 @@ public class PlayerInteraction : MonoBehaviour
             cameraZoom.Zoom();
 
             //unselect object
-            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 ZoomSelected = false;
 
@@ -148,7 +148,7 @@ public class PlayerInteraction : MonoBehaviour
         runeObject.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
 
         //turns the ineracting text off
-        UIManager.instance.isInteracting = false;
+        UIManager.instance.IsInteracting = false;
 
         RunePressed = false;
     }
