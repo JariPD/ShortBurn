@@ -5,12 +5,10 @@ public class PuzzleManager : MonoBehaviour
 {
     public static PuzzleManager instance;
 
-    [SerializeField] private CameraShake camShake;
+    [SerializeField] private MoveObjectPuzzle door;
 
     [Header("Settings")]
     public int AmountActive = 0;
-    [SerializeField] private MoveObjectPuzzle door;
-
 
     private bool coroutineAllowed = true;
     private float timer;
@@ -33,12 +31,6 @@ public class PuzzleManager : MonoBehaviour
 
         print("Puzzle complete");
 
-        //open door to next area
-        door.MoveObject = true;
-
-        //screen shake to indicate something is moving
-        StartCoroutine(camShake.Shake(5.4f, 0.015f));
-
         //set the next checkpoint for respawning
         SpawnPoints.instance.CheckPoint += 1;
 
@@ -53,6 +45,15 @@ public class PuzzleManager : MonoBehaviour
         if (other.gameObject.CompareTag("player") && AmountActive == 5)
         {
             timer += Time.deltaTime;
+
+            if (timer >= 0.1)
+            {
+                //open door to next area
+                door.MoveObject = true;
+
+                //screen shake to indicate something is moving
+                StartCoroutine(CameraShake.instance.Shake(1.5f, 0.02f));
+            }
 
             if (timer >= 3)
             {

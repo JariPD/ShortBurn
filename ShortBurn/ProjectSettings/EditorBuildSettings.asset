@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Jari Test.unity
+    guid: a97e75957ff440040b738433b38ecfcb
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: ce3c4241257083f4885330d960d886b6
   - enabled: 1
