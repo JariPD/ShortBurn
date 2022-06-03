@@ -3,19 +3,28 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Mirror
+  - Zoom
+  - Rune
+  - Plank
+  - Brick
+  - DryRack
+  - player
+  - Kettle
+  - Rope
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
+  - Interactable
+  - Rune
   - PostProcessing
   - Not in Reflection
-  - 
+  - Puzzle
   - 
   - 
   - 
