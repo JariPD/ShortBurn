@@ -12,8 +12,9 @@ public class Mirror : MonoBehaviour
     [Header("Mirror Settings")]
     [SerializeField] private int mirrorIndex;
 
-    [Header("Rune Settings")]
+    [Header("References")]
     private GameObject rune;
+    private ParticleSystem particle;
 
     private bool getRune = true;
     private bool removeRune = false;
@@ -55,7 +56,11 @@ public class Mirror : MonoBehaviour
         rune = hit.transform.gameObject;
 
         //changes the material of the object
-        rune.GetComponent<Renderer>().material.color = new Color(127, 0, 255);
+        rune.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+
+        //gets particle object and turns it on
+        particle = rune.GetComponentInChildren<ParticleSystem>();
+        particle.Play();
 
         //increases the amount of active runes
         PuzzleManager.instance.AmountActive++;
@@ -70,7 +75,10 @@ public class Mirror : MonoBehaviour
         getRune = true;
 
         //sets rune back to default if no longer selected
-        rune.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+        rune.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+
+        //gets particle object and turns it on
+        particle.Stop();
 
         //decreases the amount of active runes
         PuzzleManager.instance.AmountActive--;

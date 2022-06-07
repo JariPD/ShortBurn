@@ -6,6 +6,7 @@ public class PuzzleManager : MonoBehaviour
     public static PuzzleManager instance;
 
     [SerializeField] private MoveObjectPuzzle door;
+    [SerializeField] private ParticleSystem particle;
 
     [Header("Settings")]
     public int AmountActive = 0;
@@ -44,6 +45,8 @@ public class PuzzleManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("player") && AmountActive == 5)
         {
+            //particle.Play();
+
             timer += Time.deltaTime;
 
             if (timer >= 0.1)
