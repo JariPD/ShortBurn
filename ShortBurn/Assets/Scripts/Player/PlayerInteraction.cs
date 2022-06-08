@@ -118,6 +118,7 @@ public class PlayerInteraction : MonoBehaviour
 
                 //turns camera movement back on
                 LockPlayer.instance.MouseLook.enabled = true;
+                LockPlayer.instance.FpsController.enabled = true;
 
                 //turns hand GameObject back on
                 hand.gameObject.SetActive(true);
@@ -139,7 +140,7 @@ public class PlayerInteraction : MonoBehaviour
     private void Rune()
     {
         //increases the rune count
-        RuneManager.instance.AmountPressed++;
+        RuneManager.instance.AmountActive++;
 
         //removes tag from object so it can not be pressed again
         runeObject.tag = "Untagged";

@@ -13,6 +13,7 @@ public class Mirror : MonoBehaviour
     [SerializeField] private int mirrorIndex;
 
     [Header("References")]
+    [SerializeField] private GameObject brokenMirror;
     private GameObject rune;
     private ParticleSystem particle;
 
@@ -28,11 +29,20 @@ public class Mirror : MonoBehaviour
         {
             noHit = false;
 
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 6; i++)
             {
                 //checks if index is the same as the object that is hit if so start GetRune coroutine
                 if (mirrorIndex == i && hit.transform.gameObject.name == $"Rune {i}" && getRune)
+                {
+                    if (hit.transform.gameObject.name == "Rune 6" && getRune)
+                    {
+                        hit.transform.gameObject.SetActive(false);
+
+                        brokenMirror?.SetActive(true);
+                    }
+
                     StartCoroutine(GetRune());
+                }
             }
         }
         else
@@ -58,9 +68,9 @@ public class Mirror : MonoBehaviour
         //changes the material of the object
         rune.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
 
-        //gets particle object and turns it on
+        //gets particle object and turns it or
         particle = rune.GetComponentInChildren<ParticleSystem>();
-        particle.Play();
+        particle?.Play();
 
         //increases the amount of active runes
         PuzzleManager.instance.AmountActive++;
@@ -78,7 +88,7 @@ public class Mirror : MonoBehaviour
         rune.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
 
         //gets particle object and turns it on
-        particle.Stop();
+        particle?.Stop();
 
         //decreases the amount of active runes
         PuzzleManager.instance.AmountActive--;

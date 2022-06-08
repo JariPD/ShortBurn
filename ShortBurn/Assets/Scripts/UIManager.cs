@@ -58,13 +58,9 @@ public class UIManager : MonoBehaviour
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
 
-                Debug.Log(Cursor.lockState);
-                Debug.Log(Cursor.visible);
-
                 LockPlayer.instance.UnlockAll();
                 pauseMenu.SetActive(false);
             }
-
         }
     }
 
@@ -81,4 +77,7 @@ public class UIManager : MonoBehaviour
 
         moveToCenterText.enabled = false;
     }
+
+    
+
 }
