@@ -11,12 +11,15 @@ public class PuzzleManager : MonoBehaviour
     [Header("Settings")]
     public int AmountActive = 0;
 
+    private Collider col;
     private bool coroutineAllowed = true;
     private float timer;
 
     private void Awake()
     {
         instance = this;
+
+        col = GetComponent<SphereCollider>();
     }
 
     private void Update()
@@ -29,8 +32,6 @@ public class PuzzleManager : MonoBehaviour
     IEnumerator Win()
     {
         coroutineAllowed = false;
-
-        print("Puzzle complete");
 
         //set the next checkpoint for respawning
         SpawnPoints.instance.CheckPoint += 1;
@@ -51,17 +52,25 @@ public class PuzzleManager : MonoBehaviour
 
             if (timer >= 0.1)
             {
+                //plays sound effect
+                AudioManager.instance.Play("Stone Door Opening");
+
                 //open door to next area
                 door.MoveObject = true;
 
                 //screen shake to indicate something is moving
-                StartCoroutine(CameraShake.instance.Shake(1.5f, 0.02f));
+                StartCoroutine(CameraShake.instance.Shake(1.3f, 0.04f));
             }
 
-            if (timer >= 3)
+            if (timer >= 4.8)
             {
                 timer = 0;
+
+                //moves player to next area
                 MovePlayerToNextArea.instance.MovePlayer = true;
+
+                //turns off collider so player cant go back in
+                col.enabled = false;
             }
         }
     }

@@ -20,13 +20,15 @@ public class Hand : MonoBehaviour
         {
             beam.SetActive(true);
 
+            //beam sound effect
+            AudioManager.instance.Play("Beam");
+
             //play screenshake effect
             StartCoroutine(CameraShake.instance.Shake(0.15f, .025f));
 
             if (Physics.Raycast(origin, direction, out hit, rayDistance)) //draws a ray going forwards from the object
             {
                 //play beam vfx
-                //beam template
 
                 if (hit.transform.CompareTag("Plank"))
                     hit.transform.GetComponent<PlankPuzzle>().MoveObject = true;
@@ -84,7 +86,13 @@ public class Hand : MonoBehaviour
         }
         else
         {
+            //turns off the beam
             beam.SetActive(false);
+
+            //stops playing beam sound effect
+            AudioManager.instance.Stop("Beam");
+
+            //turns off light beams from puzzle 2
             prism.ActivateLightBeams = false;
         }
     }
