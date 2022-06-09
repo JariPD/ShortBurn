@@ -6,7 +6,7 @@ public class RuneManager : MonoBehaviour
 {
     public static RuneManager instance;
 
-    public int AmountPressed;
+    public int AmountActive;
 
     [SerializeField] private GameObject winPanel;
 
@@ -17,9 +17,17 @@ public class RuneManager : MonoBehaviour
 
     private void Update()
     {
-        if (AmountPressed == 5)
+       
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("player"))
         {
-            StartCoroutine(Win());
+            if (AmountActive == 5)
+            {
+                StartCoroutine(Win());
+            }
         }
     }
 
@@ -32,8 +40,6 @@ public class RuneManager : MonoBehaviour
         Cursor.visible = true;
 
         //play win cutscene
-
-        print("Win");
 
         //activates win panel
         winPanel.SetActive(true);

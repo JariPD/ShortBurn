@@ -19,7 +19,7 @@ public class PlayerInteraction : MonoBehaviour
     private RaycastHit hit;
 
     public bool ZoomSelected;
-    public bool RunePressed;
+    public bool PrismSelected;
 
     void Update()
     {
@@ -45,7 +45,8 @@ public class PlayerInteraction : MonoBehaviour
                     ZoomSelected = true;
 
                 if (hit.transform.gameObject.CompareTag("Rune"))
-                    RunePressed = true;
+                    PrismSelected = true;
+
             }
         }
         else
@@ -118,39 +119,12 @@ public class PlayerInteraction : MonoBehaviour
 
                 //turns camera movement back on
                 LockPlayer.instance.MouseLook.enabled = true;
+                LockPlayer.instance.FpsController.enabled = true;
 
                 //turns hand GameObject back on
                 hand.gameObject.SetActive(true);
             }
         }
-
-        if (RunePressed)
-        {
-            //sets reference to object you pressed
-            runeObject = hit.transform.gameObject;
-
-            Rune();
-        }
-    }
-
-    /// <summary>
-    /// function to increase amount of runes pressed and handles disabling them when pressed
-    /// </summary>
-    private void Rune()
-    {
-        //increases the rune count
-        RuneManager.instance.AmountPressed++;
-
-        //removes tag from object so it can not be pressed again
-        runeObject.tag = "Untagged";
-
-        //change runes appearance to indicate it being pressed
-        runeObject.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
-
-        //turns the ineracting text off
-        UIManager.instance.IsInteracting = false;
-
-        RunePressed = false;
     }
 
 #if (UNITY_EDITOR)
