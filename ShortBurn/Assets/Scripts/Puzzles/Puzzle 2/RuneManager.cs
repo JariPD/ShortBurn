@@ -9,9 +9,17 @@ public class RuneManager : MonoBehaviour
 
     [SerializeField] private GameObject winPanel;
 
+
     private void Awake()
     {
         instance = this;
+    }
+
+
+    private void Update()
+    {
+        if (AmountActive == 5)
+            StartCoroutine(UIManager.instance.MoveToCenter());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,9 +27,7 @@ public class RuneManager : MonoBehaviour
         if (other.gameObject.CompareTag("player"))
         {
             if (AmountActive == 5)
-            {
                 StartCoroutine(Win());
-            }
         }
     }
 

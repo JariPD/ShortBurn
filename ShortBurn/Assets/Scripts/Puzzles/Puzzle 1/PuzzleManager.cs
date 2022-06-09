@@ -40,7 +40,7 @@ public class PuzzleManager : MonoBehaviour
         SpawnPoints.instance.CheckPoint += 1;
 
         //turn on text that say "Go to the middle of the circle"
-        UIManager.instance.Puzzle1Win();
+        StartCoroutine(UIManager.instance.StayInCenter());
 
         yield return null;
     }
@@ -51,7 +51,7 @@ public class PuzzleManager : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if (timer >= 0.1)
+            if (timer >= 0.1 && timer <= 4.8)
             {
                 //plays sound effect
                 AudioManager.instance.Play("Stone Door Opening");
