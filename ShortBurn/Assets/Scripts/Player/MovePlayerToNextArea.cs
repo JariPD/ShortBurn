@@ -29,7 +29,5 @@ public class MovePlayerToNextArea : MonoBehaviour
 
             LockPlayer.instance.FpsController.enabled = true;
         }
-
-
     }
 }

@@ -8,6 +8,7 @@ public class Hand : MonoBehaviour
     [SerializeField] private Prism prism;
 
     private RaycastHit hit;
+    private ParticleSystem particle;
     private float boilTimer = 0;
     private float burnTimer = 0;
 
@@ -18,6 +19,7 @@ public class Hand : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
+            //turns on beam template
             beam.SetActive(true);
 
             //beam sound effect
@@ -53,11 +55,17 @@ public class Hand : MonoBehaviour
 
                 if (hit.transform.CompareTag("Kettle"))
                 {
+                    particle = hit.transform.GetComponentInChildren<ParticleSystem>();
+                    
                     boilTimer += Time.deltaTime;
 
                     if (boilTimer >= 3)
                     {
-                        hit.transform.GetComponent<BoilingPuzzle>().LaunchPlayer = true;
+                        //play fire particle
+                        particle.Play();
+
+                        //allows player to be launched
+                        hit.transform.GetComponent<BoilingPuzzle>().IsBoiling = true;
 
                         boilTimer = 0;
                     }

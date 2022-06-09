@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LightBeam : MonoBehaviour
@@ -28,8 +26,6 @@ public class LightBeam : MonoBehaviour
                     Rune();
                 }
             }
-
-            
         }
     }
 

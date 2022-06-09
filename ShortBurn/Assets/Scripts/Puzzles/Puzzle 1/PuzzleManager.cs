@@ -33,6 +33,9 @@ public class PuzzleManager : MonoBehaviour
     {
         coroutineAllowed = false;
 
+        //plays big fireball particle
+        particle.Play();
+
         //set the next checkpoint for respawning
         SpawnPoints.instance.CheckPoint += 1;
 
@@ -46,8 +49,6 @@ public class PuzzleManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("player") && AmountActive == 5)
         {
-            //particle.Play();
-
             timer += Time.deltaTime;
 
             if (timer >= 0.1)
@@ -61,6 +62,10 @@ public class PuzzleManager : MonoBehaviour
                 //screen shake to indicate something is moving
                 StartCoroutine(CameraShake.instance.Shake(1.3f, 0.04f));
             }
+
+            //plays a glass breaking sound effect after opening the door
+            if (timer >= 1 && timer <= 2)
+                AudioManager.instance.Play("Glass Break");
 
             if (timer >= 4.8)
             {

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RuneManager : MonoBehaviour
@@ -13,11 +12,6 @@ public class RuneManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-
-    private void Update()
-    {
-       
     }
 
     private void OnTriggerEnter(Collider other)
