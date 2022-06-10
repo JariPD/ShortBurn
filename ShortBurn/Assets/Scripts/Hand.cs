@@ -73,8 +73,14 @@ public class Hand : MonoBehaviour
                         //play fire particle
                         particle.Play();
 
+                        //gets audiosource with fire sfx
+                        //hit.transform.GetComponent<AudioSource>().Play();
+
+                        var pp = hit.transform.GetComponents<AudioSource>();
+                        pp[0].Play();
+
                         //allows player to be launched
-                        hit.transform.GetComponent<BoilingPuzzle>().IsBoiling = true;
+                        hit.transform.GetComponentInParent<BoilingPuzzle>().IsBoiling = true;
 
                         boilTimer = 0;
                     }
@@ -105,6 +111,9 @@ public class Hand : MonoBehaviour
         {
             //turns off the beam
             beam.SetActive(false);
+
+            //resets beam cooldown
+            currentCooldown = 0;
 
             //stops playing beam sound effect
             AudioManager.instance.Stop("Beam");
