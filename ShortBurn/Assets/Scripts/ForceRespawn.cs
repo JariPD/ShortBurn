@@ -6,7 +6,7 @@ public class ForceRespawn : MonoBehaviour
     {
         if (other.gameObject.CompareTag("player"))
         {
-            SpawnPoints.instance.StartCoroutine(SpawnPoints.instance.SpawnPlayer());
+            StartCoroutine(SpawnPoints.instance.SpawnPlayer());
         }
     }
 }

@@ -10,11 +10,14 @@ public class UIManager : MonoBehaviour
     public bool IsPaused;
     public bool ObjectSelected;
 
+    [SerializeField] private TextMeshProUGUI stayInCenterText;
     [SerializeField] private TextMeshProUGUI moveToCenterText;
     [SerializeField] private GameObject pauseMenu;
 
     [SerializeField] private Canvas interactCanvas;
     [SerializeField] private Canvas objectSelectedCanvas;
+
+    private bool coroutineAllowed = true;
 
     private void Awake()
     {
@@ -58,27 +61,31 @@ public class UIManager : MonoBehaviour
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
 
-                Debug.Log(Cursor.lockState);
-                Debug.Log(Cursor.visible);
-
                 LockPlayer.instance.UnlockAll();
                 pauseMenu.SetActive(false);
             }
-
         }
     }
-
-    public void Puzzle1Win()
+    public IEnumerator StayInCenter()
     {
-        StartCoroutine(MoveToCenter());
-    }
-
-    IEnumerator MoveToCenter()
-    {
-        moveToCenterText.enabled = true;
+        stayInCenterText.enabled = true;
 
         yield return new WaitForSeconds(4.5f);
 
-        moveToCenterText.enabled = false;
+        stayInCenterText.enabled = false;
+    }
+
+    public IEnumerator MoveToCenter()
+    {
+        if (coroutineAllowed)
+        {
+            coroutineAllowed = false;
+
+            moveToCenterText.enabled = true;
+
+            yield return new WaitForSeconds(4.5f);
+
+            moveToCenterText.enabled = false;
+        }
     }
 }

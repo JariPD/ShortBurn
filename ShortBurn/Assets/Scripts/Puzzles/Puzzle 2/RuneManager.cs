@@ -1,25 +1,33 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RuneManager : MonoBehaviour
 {
     public static RuneManager instance;
 
-    public int AmountPressed;
+    public int AmountActive;
 
     [SerializeField] private GameObject winPanel;
+
 
     private void Awake()
     {
         instance = this;
     }
 
+
     private void Update()
     {
-        if (AmountPressed == 5)
+        if (AmountActive == 5)
+            StartCoroutine(UIManager.instance.MoveToCenter());
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("player"))
         {
-            StartCoroutine(Win());
+            if (AmountActive == 5)
+                StartCoroutine(Win());
         }
     }
 
@@ -32,8 +40,6 @@ public class RuneManager : MonoBehaviour
         Cursor.visible = true;
 
         //play win cutscene
-
-        print("Win");
 
         //activates win panel
         winPanel.SetActive(true);

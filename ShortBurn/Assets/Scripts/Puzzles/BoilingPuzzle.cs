@@ -2,25 +2,34 @@ using UnityEngine;
 
 public class BoilingPuzzle : MonoBehaviour
 {
-    public bool LaunchPlayer;
+    public bool IsBoiling;
+    private bool launchPlayer;
 
     [SerializeField] private Vector3 targetPos;
     [SerializeField] private float moveSpeed;
     [SerializeField] private GameObject player;
     void Update()
     {
-        if(LaunchPlayer)
-        {
-            LockPlayer.instance.FpsController.enabled = false;
-
+        if (launchPlayer)
             player.transform.position = Vector3.MoveTowards(player.transform.position, targetPos, moveSpeed * Time.deltaTime);
-        }
 
         if (player.transform.position == targetPos)
         {
-            LaunchPlayer = false;
+            launchPlayer = false;
 
             LockPlayer.instance.FpsController.enabled = true;
+            LockPlayer.instance.CharacterController.enabled = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("player"))
+        {
+            LockPlayer.instance.FpsController.enabled = false;
+            LockPlayer.instance.CharacterController.enabled = false;
+
+            launchPlayer = true;
         }
     }
 }
