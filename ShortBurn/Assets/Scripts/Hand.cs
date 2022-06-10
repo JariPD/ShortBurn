@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Hand : MonoBehaviour
@@ -12,13 +13,23 @@ public class Hand : MonoBehaviour
     private float boilTimer = 0;
     private float burnTimer = 0;
 
+    private float cooldown = 0;
+    private float interval = 3;
+
     void Update()
     {
         Vector3 origin = transform.position;                               //origin of the ray
         Vector3 direction = transform.TransformDirection(Vector3.up); //direction for the ray
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && cooldown <= 0)
         {
+            cooldown += Time.deltaTime;
+
+            if (cooldown >= 8.5)
+            {
+                StartCoroutine(beamInterval());
+            }
+
             //turns on beam template
             beam.SetActive(true);
 
@@ -56,7 +67,7 @@ public class Hand : MonoBehaviour
                 if (hit.transform.CompareTag("Kettle"))
                 {
                     particle = hit.transform.GetComponentInChildren<ParticleSystem>();
-                    
+
                     boilTimer += Time.deltaTime;
 
                     if (boilTimer >= 3)
@@ -103,6 +114,13 @@ public class Hand : MonoBehaviour
             //turns off light beams from puzzle 2
             prism.ActivateLightBeams = false;
         }
+    }
+
+    IEnumerator beamInterval()
+    {
+        yield return new WaitForSeconds(interval);
+
+        cooldown = 0;
     }
 
 #if (UNITY_EDITOR)
