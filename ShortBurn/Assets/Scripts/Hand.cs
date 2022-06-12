@@ -73,11 +73,8 @@ public class Hand : MonoBehaviour
                         //play fire particle
                         particle.Play();
 
-                        //gets audiosource with fire sfx
-                        //hit.transform.GetComponent<AudioSource>().Play();
-
-                        var pp = hit.transform.GetComponents<AudioSource>();
-                        pp[0].Play();
+                        //starts coroutine that gets audiosource with fire and boiling sfx
+                        StartCoroutine(StartSFX());
 
                         //allows player to be launched
                         hit.transform.GetComponentInParent<BoilingPuzzle>().IsBoiling = true;
@@ -131,6 +128,20 @@ public class Hand : MonoBehaviour
         yield return new WaitForSeconds(interval);
 
         shootBeam = true;
+    }
+
+    IEnumerator StartSFX()
+    {
+
+        var pp = hit.transform.GetComponents<AudioSource>();
+
+        //plays fire sfx
+        pp[0].Play();
+
+        yield return new WaitForSeconds(3);
+
+        //plays boiling sfx
+        pp[1].Play();
     }
 
 #if (UNITY_EDITOR)
