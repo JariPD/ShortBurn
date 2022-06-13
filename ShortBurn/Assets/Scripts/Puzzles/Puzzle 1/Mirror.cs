@@ -14,11 +14,18 @@ public class Mirror : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject brokenMirror;
+    [SerializeField] private AudioClip[] sounds;
     private GameObject rune;
     private ParticleSystem particle;
+    private AudioSource audioSource;
 
     private bool getRune = true;
     private bool removeRune = false;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -65,6 +72,12 @@ public class Mirror : MonoBehaviour
         //puts the hit object into an empty GameObject
         rune = hit.transform.gameObject;
 
+        //plays fire sfx
+        rune.GetComponentInChildren<AudioSource>().Play();
+
+        //plays rune SFX
+        audioSource.PlayOneShot(RandomClip());
+
         //changes the material of the object
         rune.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
 
@@ -87,6 +100,9 @@ public class Mirror : MonoBehaviour
         //sets rune back to default if no longer selected
         rune.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
 
+        //stops playing fire sfx
+        rune.GetComponentInChildren<AudioSource>().Stop();
+
         //gets particle object and turns it on
         particle?.Stop();
 
@@ -94,6 +110,12 @@ public class Mirror : MonoBehaviour
         PuzzleManager.instance.AmountActive--;
 
         yield return null;
+    }
+
+
+    AudioClip RandomClip()
+    {
+        return sounds[Random.Range(0, sounds.Length)];
     }
 
     /// <summary>

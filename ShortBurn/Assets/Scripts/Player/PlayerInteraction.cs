@@ -7,7 +7,6 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private CameraZoom cameraZoom;
     [SerializeField] private GameObject hand;
     private GameObject mirrorObject;
-    private GameObject runeObject;
 
     [Header("Settings")]
     [SerializeField] private LayerMask layerToHit;
@@ -44,9 +43,8 @@ public class PlayerInteraction : MonoBehaviour
                 if (hit.transform.gameObject.CompareTag("Zoom"))
                     ZoomSelected = true;
 
-                if (hit.transform.gameObject.CompareTag("Rune"))
+                if (hit.transform.gameObject.CompareTag("Prism"))
                     PrismSelected = true;
-
             }
         }
         else
@@ -97,6 +95,15 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
+        if (PrismSelected)
+        {
+            var prism = hit.transform.gameObject;
+
+            prism.transform.Rotate(0, 90, 0);
+
+            PrismSelected = false;
+        }
+
         if (ZoomSelected)
         {
             //sets hand GameObject to off
@@ -126,6 +133,10 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
     }
+
+
+
+
 
 #if (UNITY_EDITOR)
     private void OnDrawGizmos()

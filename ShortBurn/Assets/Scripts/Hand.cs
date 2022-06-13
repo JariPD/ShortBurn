@@ -132,16 +132,15 @@ public class Hand : MonoBehaviour
 
     IEnumerator StartSFX()
     {
-
-        var pp = hit.transform.GetComponents<AudioSource>();
+        var sounds = hit.transform.GetComponents<AudioSource>();
 
         //plays fire sfx
-        pp[0].Play();
+        sounds[0].Play();
 
         yield return new WaitForSeconds(3);
 
         //plays boiling sfx
-        pp[1].Play();
+        sounds[1].Play();
     }
 
 #if (UNITY_EDITOR)
