@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MoveObjectPuzzle : MonoBehaviour
@@ -11,10 +12,23 @@ public class MoveObjectPuzzle : MonoBehaviour
 
     void Update()
     {
+        if (gameObject.CompareTag("Brick") && MoveObject)
+            StartCoroutine(StartSFX());
+      
+
         if (MoveObject)
         {
             transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRot, rotSpeed * Time.deltaTime);
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, moveSpeed * Time.deltaTime);
         }
+    }
+
+    IEnumerator StartSFX()
+    {
+        AudioManager.instance.Play("Brick Puzzle");
+
+        yield return new WaitForSeconds(1.3f);
+
+        AudioManager.instance.Stop("Brick Puzzle");
     }
 }

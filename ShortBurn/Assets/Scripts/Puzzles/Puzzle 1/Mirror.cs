@@ -14,6 +14,7 @@ public class Mirror : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject brokenMirror;
+    [SerializeField] private GameObject chairMirror;
     [SerializeField] private AudioClip[] sounds;
     private GameObject rune;
     private ParticleSystem particle;
@@ -36,7 +37,7 @@ public class Mirror : MonoBehaviour
         {
             noHit = false;
 
-            for (int i = 1; i <= 6; i++)
+            for (int i = 1; i <= 7; i++)
             {
                 //checks if index is the same as the object that is hit if so start GetRune coroutine
                 if (mirrorIndex == i && hit.transform.gameObject.name == $"Rune {i}" && getRune)
@@ -47,6 +48,9 @@ public class Mirror : MonoBehaviour
 
                         brokenMirror?.SetActive(true);
                     }
+
+                    if (hit.transform.gameObject.name == "Rune 7" && getRune)
+                        chairMirror?.SetActive(true);
 
                     StartCoroutine(GetRune());
                 }
@@ -73,7 +77,7 @@ public class Mirror : MonoBehaviour
         rune = hit.transform.gameObject;
 
         //plays fire sfx
-        rune.GetComponentInChildren<AudioSource>().Play();
+        rune.GetComponentInChildren<AudioSource>()?.Play();
 
         //plays rune SFX
         audioSource.PlayOneShot(RandomClip());
@@ -101,7 +105,7 @@ public class Mirror : MonoBehaviour
         rune.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
 
         //stops playing fire sfx
-        rune.GetComponentInChildren<AudioSource>().Stop();
+        rune.GetComponentInChildren<AudioSource>()?.Stop();
 
         //gets particle object and turns it on
         particle?.Stop();

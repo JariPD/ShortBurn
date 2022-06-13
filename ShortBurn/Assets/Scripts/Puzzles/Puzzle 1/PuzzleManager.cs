@@ -25,7 +25,7 @@ public class PuzzleManager : MonoBehaviour
     private void Update()
     {
         //win condition
-        if (AmountActive >= 5 && coroutineAllowed)
+        if (AmountActive >= 6 && coroutineAllowed)
             StartCoroutine(Win());
     }
 
@@ -47,7 +47,7 @@ public class PuzzleManager : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("player") && AmountActive == 5)
+        if (other.gameObject.CompareTag("player") && AmountActive >= 6)
         {
             timer += Time.deltaTime;
 
