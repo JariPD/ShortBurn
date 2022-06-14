@@ -60,7 +60,7 @@ public class PuzzleManager : MonoBehaviour
                 door.MoveObject = true;
 
                 //screen shake to indicate something is moving
-                StartCoroutine(CameraShake.instance.Shake(1.3f, 0.04f));
+                StartCoroutine(CameraShake.instance.Shake(.5f, 0.04f));
             }
 
             //plays a glass breaking sound effect after opening the door
@@ -71,8 +71,13 @@ public class PuzzleManager : MonoBehaviour
             {
                 timer = 0;
 
+                //plays voiceover for puzzle 2
+                AudioManager.instance.Play("Voiceover 2");
+
                 //moves player to next area
-                MovePlayerToNextArea.instance.MovePlayer = true;
+                StartCoroutine(SpawnPoints.instance.SpawnPlayer());
+
+                //MovePlayerToNextArea.instance.MovePlayer = true;
 
                 //turns off collider so player cant go back in
                 col.enabled = false;

@@ -10,6 +10,8 @@ public class Mirror : MonoBehaviour
     private bool noHit = false;
 
     [Header("Mirror Settings")]
+    public bool vertical;
+    public bool horizontal;
     [SerializeField] private int mirrorIndex;
 
     [Header("References")]
@@ -102,7 +104,7 @@ public class Mirror : MonoBehaviour
         getRune = true;
 
         //sets rune back to default if no longer selected
-        rune.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+        rune.GetComponent<Renderer>().material.color = new Color(0, 0, 0);
 
         //stops playing fire sfx
         rune.GetComponentInChildren<AudioSource>()?.Stop();

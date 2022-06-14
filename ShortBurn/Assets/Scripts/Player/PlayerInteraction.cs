@@ -8,15 +8,18 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject hand;
     private GameObject mirrorObject;
 
-    [Header("Settings")]
+    [Header("Ray Settings")]
     [SerializeField] private LayerMask layerToHit;
     [SerializeField] private float rayDistance;
     [SerializeField] private float rotSpeed;
+
+    [Header("Cam Settings")]
     [SerializeField] private Vector3 camTargetPos;
     [SerializeField] private Quaternion camTargetRot;
 
     private RaycastHit hit;
 
+    [Header("Selected Bools")]
     public bool ZoomSelected;
     public bool PrismSelected;
 
@@ -72,8 +75,11 @@ public class PlayerInteraction : MonoBehaviour
             float mouseY = (Input.GetAxis("Mouse Y") * rotSpeed * Time.deltaTime * Mathf.Rad2Deg);
 
             //turns object
-            mirrorObject.transform.Rotate(Vector3.right, mouseY);
-            mirrorObject.transform.Rotate(Vector3.up, mouseX);
+            if (mirrorObject.GetComponent<Mirror>().vertical)
+                mirrorObject.transform.Rotate(Vector3.right, mouseY);
+
+            if (mirrorObject.GetComponent<Mirror>().horizontal)
+                mirrorObject.transform.Rotate(Vector3.up, mouseX);
 
             //unselect object
             if (Input.GetKeyDown(KeyCode.Mouse1))
