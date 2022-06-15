@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2718884860876981308}
   - component: {fileID: 8346670279821407749}
   - component: {fileID: 1190225748014731757}
+  - component: {fileID: -3893455787139084428}
   m_Layer: 0
   m_Name: Lowpapers
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7516238123636365602}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.6471286, y: -0.12035423, z: 0.87886983}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-3893455787139084428
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7516238123636365602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23629883, y: 0.24070847, z: 0.8549116}
+  m_Center: {x: 0, y: 0.12035422, z: 0}

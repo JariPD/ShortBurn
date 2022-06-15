@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1586752418177131653}
   - component: {fileID: 5512333178193455024}
   - component: {fileID: 413414445353432812}
-  m_Layer: 0
+  - component: {fileID: -2445824718619678100}
+  m_Layer: 3
   m_Name: Lowcloset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,12 +27,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2606781842946845835}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.55800444, y: -0.0013496685, z: -4.064827}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5512333178193455024
 MeshFilter:
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48d670fed7ecdad40bc0878119350e46, type: 2}
+  - {fileID: 2100000, guid: e31022c29538a244989bc44f9457063b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-2445824718619678100
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2606781842946845835}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.3056293, y: 1.6619555, z: 1.0055876}
+  m_Center: {x: -0.032787085, y: 0.83097774, z: -0.0712682}
