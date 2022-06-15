@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5079365351240226772}
   - component: {fileID: 7572016852766769356}
   - component: {fileID: 237602576603087008}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 7670042731169313651}
   - component: {fileID: 4076374121380884319}
   - component: {fileID: 4762915447583857012}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Rune5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 1760011275956438988}
   - component: {fileID: 258958963183282201}
   - component: {fileID: 940322977736012589}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: polySurface2224
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 3547566856940468264}
   - component: {fileID: 8561267139198956035}
   - component: {fileID: 3230812024736332809}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: polySurface2243
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 217198586035928783}
   - component: {fileID: 2217815654446421032}
   - component: {fileID: 1489310943272108018}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: polySurface2245
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 2129717479052697095}
   - component: {fileID: 6149634247621031140}
   - component: {fileID: 6652214844339887676}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Rune1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3061600682731078506}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Satanic_Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641285993795366309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.137657, y: 0.03768128, z: -8.290836}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 6432597704727410947}
   - component: {fileID: 4222514229584413539}
   - component: {fileID: 2376501279900082356}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: polySurface2240
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 3074070342897684387}
   - component: {fileID: 1850946360777112531}
   - component: {fileID: 7515621441534149643}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Rune4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 2409501765483456473}
   - component: {fileID: 6729536807731536283}
   - component: {fileID: 8066204942421689590}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: polySurface2260
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 4961908090062046268}
   - component: {fileID: 6090526411793045189}
   - component: {fileID: 1635606526388286534}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Rune3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 3637149158283190108}
   - component: {fileID: 8967643914274072517}
   - component: {fileID: 3420333530699309175}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: polySurface2244
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 2206248119651763919}
   - component: {fileID: 4510086914037733979}
   - component: {fileID: 7170833001945525675}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: polySurface2241
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1054,7 +1054,7 @@ GameObject:
   - component: {fileID: 489134331649778189}
   - component: {fileID: 217477086694634216}
   - component: {fileID: 1171583108496394697}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Rune2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 9024525692842567926}
   - component: {fileID: 6267132218156825008}
   - component: {fileID: 6189658353756161426}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: polySurface2246
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1220,7 +1220,7 @@ GameObject:
   - component: {fileID: 2577825264743057657}
   - component: {fileID: 4792006783661340986}
   - component: {fileID: 5280390358882913854}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: polySurface2259
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1303,7 +1303,7 @@ GameObject:
   - component: {fileID: 1659391144052520384}
   - component: {fileID: 9178174212992561081}
   - component: {fileID: 2599172340497354629}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: polySurface2225
   m_TagString: Untagged
   m_Icon: {fileID: 0}
