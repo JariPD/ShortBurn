@@ -31,7 +31,7 @@ Transform:
   - {fileID: 4867387110155250908}
   - {fileID: 2718497379212825201}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3136329841831789239
 GameObject:
@@ -642,7 +642,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.58
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2218,11 +2218,11 @@ ParticleSystem:
         m_RotationOrder: 4
     m_Range: {x: 0, y: 1}
   ForceModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 21.42
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5449,14 +5449,14 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 2166
+    maxNumParticles: 1524
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.58
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5715,7 +5715,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1230
+      scalar: 348
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -6153,10 +6153,10 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.4178355, g: 0.5595127, b: 0.9150943, a: 1}
+        key0: {r: 0.4178355, g: 0.5595127, b: 0.9150943, a: 0.67058825}
         key1: {r: 1, g: 0.5663458, b: 0, a: 1}
-        key2: {r: 1, g: 0.011764707, b: 0, a: 0}
-        key3: {r: 1, g: 0.011764707, b: 0, a: 0}
+        key2: {r: 1, g: 0.011764707, b: 0, a: 1}
+        key3: {r: 1, g: 0.011764707, b: 0, a: 0.41568628}
         key4: {r: 1, g: 0.003921569, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
@@ -6170,16 +6170,16 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 53006
-        atime2: 65535
-        atime3: 0
+        atime1: 16384
+        atime2: 53006
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 5
-        m_NumAlphaKeys: 3
+        m_NumAlphaKeys: 4
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -7032,11 +7032,11 @@ ParticleSystem:
         m_RotationOrder: 4
     m_Range: {x: 0, y: 1}
   ForceModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 21.42
       minScalar: 0
       maxCurve:
         serializedVersion: 2

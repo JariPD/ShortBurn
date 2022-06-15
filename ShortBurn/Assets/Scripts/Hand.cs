@@ -10,7 +10,10 @@ public class Hand : MonoBehaviour
     private ParticleSystem particle;
 
     [Header("Ray settings")]
-    [SerializeField] private float rayDistance = 10;
+    [SerializeField] private float rayStartDistance = 1;
+    [SerializeField] private float rayMaxDistance = 4;
+    [SerializeField] private float raySpeed;
+    private float rayTimer;
 
     private RaycastHit hit;
     private float boilTimer = 0;
@@ -22,14 +25,16 @@ public class Hand : MonoBehaviour
     private float currentCooldown = 0;
     private bool shootBeam = true;
 
+    private float currentRayDistance;
+
     void Update()
     {
         Vector3 origin = transform.position;                               //origin of the ray
-        Vector3 direction = transform.TransformDirection(Vector3.up); //direction for the ray
+        Vector3 direction = transform.TransformDirection(Vector3.forward); //direction for the ray
 
         if (Input.GetKey(KeyCode.Mouse0) && shootBeam)
         {
-            //startCooldown = true;
+            rayTimer += Time.deltaTime;
 
             currentCooldown += Time.deltaTime;
 
@@ -45,7 +50,8 @@ public class Hand : MonoBehaviour
             //play screenshake effect
             StartCoroutine(CameraShake.instance.Shake(0.15f, .025f));
 
-            if (Physics.Raycast(origin, direction, out hit, rayDistance)) //draws a ray going forwards from the object
+            currentRayDistance = Mathf.Lerp(rayStartDistance, rayMaxDistance, rayTimer / raySpeed);
+            if (Physics.Raycast(origin, direction, out hit, currentRayDistance)) //draws a ray going forwards from the object
             {
                 if (hit.transform.CompareTag("Brick") || hit.transform.CompareTag("DryRack"))
                     hit.transform.GetComponent<MoveObjectPuzzle>().MoveObject = true;
@@ -109,6 +115,9 @@ public class Hand : MonoBehaviour
             //turns off the beam
             beam.SetActive(false);
 
+            //resets ray timer
+            rayTimer = 0;
+
             //resets beam cooldown
             currentCooldown = 0;
 
@@ -146,7 +155,7 @@ public class Hand : MonoBehaviour
 #if (UNITY_EDITOR)
     private void OnDrawGizmos()
     {
-        Vector3 dir = transform.TransformDirection(Vector3.up) * rayDistance;
+        Vector3 dir = transform.TransformDirection(Vector3.forward) * currentRayDistance;
 
         Gizmos.color = Color.cyan;
 
