@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MoveObjectPuzzle : MonoBehaviour
@@ -9,8 +10,26 @@ public class MoveObjectPuzzle : MonoBehaviour
 
     public bool MoveObject;
 
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
+        if (gameObject.CompareTag("Brick") && MoveObject)
+        {
+            AudioManager.instance.Play("Brick Puzzle");
+
+            //if (Vector3.Distance(transform.position, targetPos) <= 0.01f)
+            //bool a = Mathf.Approximately(transform.position.z, targetPos.z);
+
+            if (transform.localPosition == targetPos)
+                AudioManager.instance.Stop("Brick Puzzle");
+        }
+
         if (MoveObject)
         {
             transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRot, rotSpeed * Time.deltaTime);

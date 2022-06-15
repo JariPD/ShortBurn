@@ -7,17 +7,19 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private CameraZoom cameraZoom;
     [SerializeField] private GameObject hand;
     private GameObject mirrorObject;
-    private GameObject runeObject;
 
-    [Header("Settings")]
+    [Header("Ray Settings")]
     [SerializeField] private LayerMask layerToHit;
     [SerializeField] private float rayDistance;
     [SerializeField] private float rotSpeed;
+
+    [Header("Cam Settings")]
     [SerializeField] private Vector3 camTargetPos;
     [SerializeField] private Quaternion camTargetRot;
 
     private RaycastHit hit;
 
+    [Header("Selected Bools")]
     public bool ZoomSelected;
     public bool PrismSelected;
 
@@ -44,9 +46,8 @@ public class PlayerInteraction : MonoBehaviour
                 if (hit.transform.gameObject.CompareTag("Zoom"))
                     ZoomSelected = true;
 
-                if (hit.transform.gameObject.CompareTag("Rune"))
+                if (hit.transform.gameObject.CompareTag("Prism"))
                     PrismSelected = true;
-
             }
         }
         else
@@ -74,8 +75,11 @@ public class PlayerInteraction : MonoBehaviour
             float mouseY = (Input.GetAxis("Mouse Y") * rotSpeed * Time.deltaTime * Mathf.Rad2Deg);
 
             //turns object
-            mirrorObject.transform.Rotate(Vector3.right, mouseY);
-            mirrorObject.transform.Rotate(Vector3.up, mouseX);
+            if (mirrorObject.GetComponent<Mirror>().vertical)
+                mirrorObject.transform.Rotate(Vector3.right, mouseY);
+
+            if (mirrorObject.GetComponent<Mirror>().horizontal)
+                mirrorObject.transform.Rotate(Vector3.up, mouseX);
 
             //unselect object
             if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -95,6 +99,15 @@ public class PlayerInteraction : MonoBehaviour
                 //turns hand GameObject back on
                 hand.gameObject.SetActive(true);
             }
+        }
+
+        if (PrismSelected)
+        {
+            var prism = hit.transform.gameObject;
+
+            prism.transform.Rotate(0, 90, 0);
+
+            PrismSelected = false;
         }
 
         if (ZoomSelected)
@@ -126,6 +139,10 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
     }
+
+
+
+
 
 #if (UNITY_EDITOR)
     private void OnDrawGizmos()

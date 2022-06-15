@@ -10,15 +10,25 @@ public class Mirror : MonoBehaviour
     private bool noHit = false;
 
     [Header("Mirror Settings")]
+    public bool vertical;
+    public bool horizontal;
     [SerializeField] private int mirrorIndex;
 
     [Header("References")]
     [SerializeField] private GameObject brokenMirror;
+    [SerializeField] private GameObject chairMirror;
+    [SerializeField] private AudioClip[] sounds;
     private GameObject rune;
     private ParticleSystem particle;
+    private AudioSource audioSource;
 
     private bool getRune = true;
     private bool removeRune = false;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -29,7 +39,7 @@ public class Mirror : MonoBehaviour
         {
             noHit = false;
 
-            for (int i = 1; i <= 6; i++)
+            for (int i = 1; i <= 7; i++)
             {
                 //checks if index is the same as the object that is hit if so start GetRune coroutine
                 if (mirrorIndex == i && hit.transform.gameObject.name == $"Rune {i}" && getRune)
@@ -40,6 +50,9 @@ public class Mirror : MonoBehaviour
 
                         brokenMirror?.SetActive(true);
                     }
+
+                    if (hit.transform.gameObject.name == "Rune 7" && getRune)
+                        chairMirror?.SetActive(true);
 
                     StartCoroutine(GetRune());
                 }
@@ -65,6 +78,12 @@ public class Mirror : MonoBehaviour
         //puts the hit object into an empty GameObject
         rune = hit.transform.gameObject;
 
+        //plays fire sfx
+        rune.GetComponentInChildren<AudioSource>()?.Play();
+
+        //plays rune SFX
+        audioSource.PlayOneShot(RandomClip());
+
         //changes the material of the object
         rune.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
 
@@ -85,7 +104,10 @@ public class Mirror : MonoBehaviour
         getRune = true;
 
         //sets rune back to default if no longer selected
-        rune.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+        rune.GetComponent<Renderer>().material.color = new Color(0, 0, 0);
+
+        //stops playing fire sfx
+        rune.GetComponentInChildren<AudioSource>()?.Stop();
 
         //gets particle object and turns it on
         particle?.Stop();
@@ -94,6 +116,12 @@ public class Mirror : MonoBehaviour
         PuzzleManager.instance.AmountActive--;
 
         yield return null;
+    }
+
+
+    AudioClip RandomClip()
+    {
+        return sounds[Random.Range(0, sounds.Length)];
     }
 
     /// <summary>

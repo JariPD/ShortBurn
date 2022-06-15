@@ -1,24 +1,41 @@
+using System.Collections;
 using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    [SerializeField] private float rayDistance = 10;
     //[SerializeField] private LayerMask layerToHit;
+    [Header("References")]
     [SerializeField] private GameObject beam;
     [SerializeField] private Prism prism;
+    private ParticleSystem particle;
+
+    [Header("Ray settings")]
+    [SerializeField] private float rayDistance = 10;
 
     private RaycastHit hit;
-    private ParticleSystem particle;
     private float boilTimer = 0;
     private float burnTimer = 0;
+
+    [Header("Beam cooldown settings")]
+    [SerializeField] private float cooldown = 7.5f;
+    [SerializeField] private float interval = 3;
+    private float currentCooldown = 0;
+    private bool shootBeam = true;
 
     void Update()
     {
         Vector3 origin = transform.position;                               //origin of the ray
         Vector3 direction = transform.TransformDirection(Vector3.up); //direction for the ray
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && shootBeam)
         {
+            //startCooldown = true;
+
+            currentCooldown += Time.deltaTime;
+
+            if (currentCooldown >= cooldown)
+                StartCoroutine(beamInterval());
+
             //turns on beam template
             beam.SetActive(true);
 
@@ -30,15 +47,7 @@ public class Hand : MonoBehaviour
 
             if (Physics.Raycast(origin, direction, out hit, rayDistance)) //draws a ray going forwards from the object
             {
-                //play beam vfx
-
-                if (hit.transform.CompareTag("Plank"))
-                    hit.transform.GetComponent<PlankPuzzle>().MoveObject = true;
-
-                if (hit.transform.CompareTag("Brick"))
-                    hit.transform.gameObject.GetComponent<MoveObjectPuzzle>().MoveObject = true;
-
-                if (hit.transform.CompareTag("DryRack"))
+                if (hit.transform.CompareTag("Brick") || hit.transform.CompareTag("DryRack"))
                     hit.transform.GetComponent<MoveObjectPuzzle>().MoveObject = true;
 
                 if (hit.transform.CompareTag("Rope"))
@@ -56,7 +65,7 @@ public class Hand : MonoBehaviour
                 if (hit.transform.CompareTag("Kettle"))
                 {
                     particle = hit.transform.GetComponentInChildren<ParticleSystem>();
-                    
+
                     boilTimer += Time.deltaTime;
 
                     if (boilTimer >= 3)
@@ -64,8 +73,11 @@ public class Hand : MonoBehaviour
                         //play fire particle
                         particle.Play();
 
+                        //starts coroutine that gets audiosource with fire and boiling sfx
+                        StartCoroutine(StartSFX());
+
                         //allows player to be launched
-                        hit.transform.GetComponent<BoilingPuzzle>().IsBoiling = true;
+                        hit.transform.GetComponentInParent<BoilingPuzzle>().IsBoiling = true;
 
                         boilTimer = 0;
                     }
@@ -97,12 +109,38 @@ public class Hand : MonoBehaviour
             //turns off the beam
             beam.SetActive(false);
 
+            //resets beam cooldown
+            currentCooldown = 0;
+
             //stops playing beam sound effect
             AudioManager.instance.Stop("Beam");
 
             //turns off light beams from puzzle 2
             prism.ActivateLightBeams = false;
         }
+    }
+
+    IEnumerator beamInterval()
+    {
+        shootBeam = false;
+        currentCooldown = 0;
+
+        yield return new WaitForSeconds(interval);
+
+        shootBeam = true;
+    }
+
+    IEnumerator StartSFX()
+    {
+        var sounds = hit.transform.GetComponents<AudioSource>();
+
+        //plays fire sfx
+        sounds[0].Play();
+
+        yield return new WaitForSeconds(3);
+
+        //plays boiling sfx
+        sounds[1].Play();
     }
 
 #if (UNITY_EDITOR)
