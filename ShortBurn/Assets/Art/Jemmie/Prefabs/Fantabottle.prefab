@@ -507,6 +507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4136331721959862177}
+  - component: {fileID: 9058714828544515965}
   m_Layer: 0
   m_Name: Fantabottle
   m_TagString: Untagged
@@ -535,8 +536,22 @@ Transform:
   - {fileID: 8618555277760439560}
   - {fileID: 7811452486926649182}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &9058714828544515965
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4441703429794143046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.23155984
+  m_Height: 1.2241199
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.0014505386, z: -0.17381498}
 --- !u!1 &7062992427442573975
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2094014080740452133}
-  m_Layer: 0
+  - component: {fileID: 4521764277854832390}
+  m_Layer: 3
   m_Name: DryingRack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,8 +33,21 @@ Transform:
   - {fileID: 5613189217775720408}
   - {fileID: 5978226179442036094}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4521764277854832390
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604616388939562399}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.28323627, y: 0.062143326, z: 3.597546}
+  m_Center: {x: 0.7838508, y: 1.1207864, z: 3.936937}
 --- !u!1 &4212876706906813890
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +59,7 @@ GameObject:
   - component: {fileID: 5978226179442036094}
   - component: {fileID: 7931565854051511568}
   - component: {fileID: 5179120437566258941}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pCylinder225
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +142,7 @@ GameObject:
   - component: {fileID: 5312950259662997874}
   - component: {fileID: 7588319641566779645}
   - component: {fileID: 5946954558197722853}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pCylinder223
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +225,7 @@ GameObject:
   - component: {fileID: 5613189217775720408}
   - component: {fileID: 6898702197141187135}
   - component: {fileID: 7767987883122296356}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pCylinder224
   m_TagString: Untagged
   m_Icon: {fileID: 0}
