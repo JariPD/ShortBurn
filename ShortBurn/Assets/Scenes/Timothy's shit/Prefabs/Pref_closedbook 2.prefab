@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3745815356611736960}
   - component: {fileID: 311897008447470117}
   - component: {fileID: 2571805959128370927}
+  - component: {fileID: -4618296356372238011}
   m_Layer: 0
   m_Name: Pref_closedbook 2
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-4618296356372238011
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4084799586428514106}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14436355, y: 0.06587447, z: 0.2026633}
+  m_Center: {x: 0, y: 0, z: 0}
