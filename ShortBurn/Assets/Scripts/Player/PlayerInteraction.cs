@@ -72,7 +72,7 @@ public class PlayerInteraction : MonoBehaviour
 
             //turn input
             float mouseX = (Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime * Mathf.Rad2Deg);
-            float mouseY = (Input.GetAxis("Mouse Y") * rotSpeed * Time.deltaTime * Mathf.Rad2Deg);
+            float mouseY = (Input.GetAxis("Mouse Y") * -rotSpeed * Time.deltaTime * Mathf.Rad2Deg);
 
             //turns object
             if (mirrorObject.GetComponentInChildren<Mirror>().vertical)

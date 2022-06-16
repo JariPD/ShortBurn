@@ -41,7 +41,7 @@ public class Hand : MonoBehaviour
             if (currentCooldown >= cooldown)
                 StartCoroutine(beamInterval());
 
-            //turns on beam template
+            //turns on beam
             beam.SetActive(true);
 
             //beam sound effect
