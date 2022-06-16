@@ -8,6 +8,7 @@ public class Hand : MonoBehaviour
     [SerializeField] private GameObject beam;
     [SerializeField] private Prism prism;
     private ParticleSystem particle;
+    private Animator anim;
 
     [Header("Ray settings")]
     [SerializeField] private float rayStartDistance = 1;
@@ -27,6 +28,11 @@ public class Hand : MonoBehaviour
 
     private float currentRayDistance;
 
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     void Update()
     {
         Vector3 origin = transform.position;                               //origin of the ray
@@ -34,21 +40,11 @@ public class Hand : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0) && shootBeam)
         {
-            rayTimer += Time.deltaTime;
+            StartCoroutine(ShootBeam());
 
-            currentCooldown += Time.deltaTime;
-
+            //starts cooldown if beam is done shooting
             if (currentCooldown >= cooldown)
                 StartCoroutine(beamInterval());
-
-            //turns on beam
-            beam.SetActive(true);
-
-            //beam sound effect
-            AudioManager.instance.Play("Beam");
-
-            //play screenshake effect
-            StartCoroutine(CameraShake.instance.Shake(0.15f, .025f));
 
             currentRayDistance = Mathf.Lerp(rayStartDistance, rayMaxDistance, rayTimer / raySpeed);
             if (Physics.Raycast(origin, direction, out hit, currentRayDistance)) //draws a ray going forwards from the object
@@ -93,7 +89,7 @@ public class Hand : MonoBehaviour
                 {
                     burnTimer += Time.deltaTime;
 
-                   Mathf.Lerp(hit.transform.GetComponent<MeshRenderer>().material.color.a, 0, burnTimer);
+                    Mathf.Lerp(hit.transform.GetComponent<MeshRenderer>().material.color.a, 0, burnTimer);
 
                     if (burnTimer >= 2)
                     {
@@ -105,7 +101,7 @@ public class Hand : MonoBehaviour
 
                 if (hit.transform.CompareTag("Prism"))
                 {
-                    prism = hit.transform.GetComponent<Prism>();
+                    prism = hit.transform.GetComponentInChildren<Prism>();
                     prism.ActivateLightBeams = true;
                 }
             }
@@ -114,23 +110,45 @@ public class Hand : MonoBehaviour
         }
         else
         {
+            //turns off light beams from puzzle 2
+            prism.ActivateLightBeams = false;
+
+            //sets animation state
+            anim.SetBool("BeamActive", false);
+
             //turns off the beam
             beam.SetActive(false);
 
             //resets ray timer
             rayTimer = 0;
 
-            //resets beam cooldown
-            currentCooldown = 0;
-
             //stops playing beam sound effect
             AudioManager.instance.Stop("Beam");
-
-            //turns off light beams from puzzle 2
-            prism.ActivateLightBeams = false;
         }
     }
 
+    IEnumerator ShootBeam()
+    {
+        //sets animation state
+        anim.SetBool("BeamActive", true);
+
+        yield return new WaitForSeconds(1.6f);
+
+        //turns on beam
+        beam.SetActive(true);
+
+        //beam sound effect
+        AudioManager.instance.Play("Beam");
+
+        //play screenshake effect
+        StartCoroutine(CameraShake.instance.Shake(0.15f, .025f));
+
+        //starts timer that slowly increases raycast distance
+        rayTimer += Time.deltaTime;
+
+        //starts timer that keeps track for how long the beam has been fired
+        currentCooldown += Time.deltaTime;
+    }
     IEnumerator beamInterval()
     {
         shootBeam = false;
