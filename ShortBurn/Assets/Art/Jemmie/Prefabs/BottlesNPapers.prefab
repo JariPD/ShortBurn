@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1714225234296570578}
   - component: {fileID: 3726684467106396065}
   - component: {fileID: 3149956570663389639}
+  - component: {fileID: -6657725116425686150}
   m_Layer: 0
   m_Name: BottlesNPapers
   m_TagString: Untagged
@@ -84,3 +85,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-6657725116425686150
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022733117944723206}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20986877, y: 0.4645215, z: 0.74883956}
+  m_Center: {x: 0, y: 0.24261893, z: 0}

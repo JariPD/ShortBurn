@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4176068740765570781}
   - component: {fileID: 3746816096319641657}
   - component: {fileID: 3304148724135258319}
+  - component: {fileID: -7922930745118343976}
   m_Layer: 0
   m_Name: Plantenbak
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-7922930745118343976
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5166676252721701100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.83656245, y: 0.35589126, z: 0.49102232}
+  m_Center: {x: 0, y: 0, z: 0}

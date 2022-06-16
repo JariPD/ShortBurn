@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2997940391235192250}
   - component: {fileID: 5835815679994760436}
   - component: {fileID: 6290368186472353330}
+  - component: {fileID: 9025389130005903659}
+  - component: {fileID: 1942635686001263924}
   m_Layer: 3
   m_Name: Stoel
   m_TagString: Untagged
@@ -31,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5835815679994760436
 MeshFilter:
@@ -83,3 +85,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9025389130005903659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4790825916059667849}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0078137, y: 1.0173935, z: 1.0069101}
+  m_Center: {x: 0, y: 0.50869673, z: 0}
+--- !u!65 &1942635686001263924
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4790825916059667849}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0078137, y: 2.4582622, z: 0.09104413}
+  m_Center: {x: 0, y: 1.2291311, z: -0.45793298}

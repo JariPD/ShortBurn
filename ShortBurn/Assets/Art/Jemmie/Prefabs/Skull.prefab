@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3566532703567322063}
   - component: {fileID: 1500533713649997064}
   - component: {fileID: 5787035445137187360}
+  - component: {fileID: 2072428824863710789}
   m_Layer: 0
   m_Name: Skull
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1500533713649997064
 MeshFilter:
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &2072428824863710789
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8722126770539326155}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.10178192
+  m_Height: 0.24183147
+  m_Direction: 1
+  m_Center: {x: -0.000000018626451, y: 0, z: 0.000000059604645}
