@@ -72,13 +72,13 @@ public class PlayerInteraction : MonoBehaviour
 
             //turn input
             float mouseX = (Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime * Mathf.Rad2Deg);
-            float mouseY = (Input.GetAxis("Mouse Y") * rotSpeed * Time.deltaTime * Mathf.Rad2Deg);
+            float mouseY = (Input.GetAxis("Mouse Y") * -rotSpeed * Time.deltaTime * Mathf.Rad2Deg);
 
             //turns object
-            if (mirrorObject.GetComponent<Mirror>().vertical)
+            if (mirrorObject.GetComponentInChildren<Mirror>().vertical)
                 mirrorObject.transform.Rotate(Vector3.right, mouseY);
 
-            if (mirrorObject.GetComponent<Mirror>().horizontal)
+            if (mirrorObject.GetComponentInChildren<Mirror>().horizontal)
                 mirrorObject.transform.Rotate(Vector3.up, mouseX);
 
             //unselect object
