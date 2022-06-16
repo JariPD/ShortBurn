@@ -42,6 +42,12 @@ public class Hand : MonoBehaviour
         {
             StartCoroutine(ShootBeam());
 
+            //starts timer that slowly increases raycast distance
+            rayTimer += Time.deltaTime;
+
+            //starts timer that keeps track for how long the beam has been fired
+            currentCooldown += Time.deltaTime;
+
             //starts cooldown if beam is done shooting
             if (currentCooldown >= cooldown)
                 StartCoroutine(beamInterval());
@@ -132,7 +138,7 @@ public class Hand : MonoBehaviour
         //sets animation state
         anim.SetBool("BeamActive", true);
 
-        yield return new WaitForSeconds(1.6f);
+        new WaitForSeconds(1.6f);
 
         //turns on beam
         beam.SetActive(true);
@@ -143,12 +149,9 @@ public class Hand : MonoBehaviour
         //play screenshake effect
         StartCoroutine(CameraShake.instance.Shake(0.15f, .025f));
 
-        //starts timer that slowly increases raycast distance
-        rayTimer += Time.deltaTime;
-
-        //starts timer that keeps track for how long the beam has been fired
-        currentCooldown += Time.deltaTime;
+        yield return null;
     }
+
     IEnumerator beamInterval()
     {
         shootBeam = false;
