@@ -89,9 +89,11 @@ public class Hand : MonoBehaviour
                     }
                 }
 
-                if (hit.transform.CompareTag("Burnable"))
+                if (hit.transform.CompareTag("Burnable") || hit.transform.CompareTag("Plant"))
                 {
                     burnTimer += Time.deltaTime;
+
+                   Mathf.Lerp(hit.transform.GetComponent<MeshRenderer>().material.color.a, 0, burnTimer);
 
                     if (burnTimer >= 2)
                     {
