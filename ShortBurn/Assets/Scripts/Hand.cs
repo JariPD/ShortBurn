@@ -23,9 +23,11 @@ public class Hand : MonoBehaviour
     [Header("Beam cooldown settings")]
     [SerializeField] private float cooldown = 7.5f;
     [SerializeField] private float interval = 3;
-    private float currentCooldown = 0;
+    [SerializeField] private float currentCooldown = 0;
     private bool shootBeam = true;
 
+    private bool shooting = false;
+    private bool allowCoroutine = true;
     private float currentRayDistance;
 
     private void Start()
@@ -40,13 +42,24 @@ public class Hand : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0) && shootBeam)
         {
-            StartCoroutine(ShootBeam());
+            if (allowCoroutine)
+            {
+                allowCoroutine = false;
+                StartCoroutine(ShootBeam());
+            }
 
-            //starts timer that slowly increases raycast distance
-            rayTimer += Time.deltaTime;
+            if (shooting)
+            {
+                //starts timer that slowly increases raycast distance
+                rayTimer += Time.deltaTime;
 
-            //starts timer that keeps track for how long the beam has been fired
-            currentCooldown += Time.deltaTime;
+                //starts timer that keeps track for how long the beam has been fired
+                currentCooldown += Time.deltaTime;
+            }
+
+            //play screenshake effect
+            if (currentCooldown >= 0.1f)
+                StartCoroutine(CameraShake.instance.Shake(0.1f, .025f));
 
             //starts cooldown if beam is done shooting
             if (currentCooldown >= cooldown)
@@ -91,13 +104,13 @@ public class Hand : MonoBehaviour
                     }
                 }
 
-                if (hit.transform.CompareTag("Burnable") || hit.transform.CompareTag("Plant"))
+                if (hit.transform.CompareTag("Burnable"))
                 {
                     burnTimer += Time.deltaTime;
 
-                    Mathf.Lerp(hit.transform.GetComponent<MeshRenderer>().material.color.a, 0, burnTimer);
+                    //Mathf.Lerp(hit.transform.GetComponent<MeshRenderer>().material.color.a, 0, burnTimer);
 
-                    if (burnTimer >= 2)
+                    if (burnTimer >= 1)
                     {
                         hit.transform.gameObject.SetActive(false);
 
@@ -115,22 +128,32 @@ public class Hand : MonoBehaviour
                 prism.ActivateLightBeams = false;
         }
         else
-        {
-            //turns off light beams from puzzle 2
-            prism.ActivateLightBeams = false;
+            StopBeam();
+    }
 
-            //sets animation state
-            anim.SetBool("BeamActive", false);
+    private void StopBeam()
+    {
+        shooting = false;
 
-            //turns off the beam
-            beam.SetActive(false);
+        //turns off light beams from puzzle 2
+        prism.ActivateLightBeams = false;
 
-            //resets ray timer
-            rayTimer = 0;
+        //sets animation state
+        anim.SetBool("BeamActive", false);
 
-            //stops playing beam sound effect
-            AudioManager.instance.Stop("Beam");
-        }
+        //turns off the beam
+        beam.SetActive(false);
+
+        //resets ray timer
+        rayTimer = 0;
+
+        //resets cooldown
+        currentCooldown = 0;
+
+        //stops playing beam sound effect
+        AudioManager.instance.Stop("Beam");
+
+        allowCoroutine = true;
     }
 
     IEnumerator ShootBeam()
@@ -138,27 +161,26 @@ public class Hand : MonoBehaviour
         //sets animation state
         anim.SetBool("BeamActive", true);
 
-        new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1.7f);
+
+        shooting = true;
 
         //turns on beam
         beam.SetActive(true);
 
         //beam sound effect
         AudioManager.instance.Play("Beam");
-
-        //play screenshake effect
-        StartCoroutine(CameraShake.instance.Shake(0.15f, .025f));
-
-        yield return null;
     }
 
     IEnumerator beamInterval()
     {
+        allowCoroutine = false;
         shootBeam = false;
         currentCooldown = 0;
 
         yield return new WaitForSeconds(interval);
 
+        allowCoroutine = true;
         shootBeam = true;
     }
 
