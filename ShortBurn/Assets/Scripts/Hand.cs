@@ -104,7 +104,7 @@ public class Hand : MonoBehaviour
                     }
                 }
 
-                if (hit.transform.CompareTag("Burnable") || hit.transform.CompareTag("Plant"))
+                if (hit.transform.CompareTag("Burnable"))
                 {
                     burnTimer += Time.deltaTime;
 
@@ -146,6 +146,9 @@ public class Hand : MonoBehaviour
 
         //resets ray timer
         rayTimer = 0;
+
+        //resets cooldown
+        currentCooldown = 0;
 
         //stops playing beam sound effect
         AudioManager.instance.Stop("Beam");
