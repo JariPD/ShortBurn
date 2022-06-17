@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8214897328733566370}
   - component: {fileID: 5021221174008822279}
   - component: {fileID: 7082474756458925773}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pref_openbook 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5021221174008822279
 MeshFilter:

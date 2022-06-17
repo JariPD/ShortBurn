@@ -108,9 +108,9 @@ public class Hand : MonoBehaviour
                 {
                     burnTimer += Time.deltaTime;
 
-                    Mathf.Lerp(hit.transform.GetComponent<MeshRenderer>().material.color.a, 0, burnTimer);
+                    //Mathf.Lerp(hit.transform.GetComponent<MeshRenderer>().material.color.a, 0, burnTimer);
 
-                    if (burnTimer >= 2)
+                    if (burnTimer >= 1)
                     {
                         hit.transform.gameObject.SetActive(false);
 
