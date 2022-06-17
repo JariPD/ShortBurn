@@ -230,24 +230,24 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 6822}
-      m_SelectedIDs: b83fffff
-      m_LastClickedID: -49224
-      m_ExpandedIDs: 56beffffcedeffff14fbffffea6a0000766b00004c6c0000986c00002a6d0000506e0000086f0000526f0000ce700000c6750000
+      scrollPos: {x: 0, y: 278}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: e486fefffa92feff449cfeff22a6feff54b6feff12e8feff1e0cffffaa24fffff228ffff56beffffcedeffff14fbffffea6a0000766b00004c6c0000986c00002a6d0000506e0000086f0000526f0000ce700000ba710000c67500007e48020064490200544a0200884b0200424c0200884c0200924d0200ac4d0200204e0200124f0200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Point Light (5)
+        m_OriginalName: Point Light (5)
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 177260
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 4
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -317,8 +317,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: -175.20001, y: -25.600006}
+      snapOffset: {x: -175.20001, y: -25.600006}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -339,7 +339,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -575,9 +575,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 22.375858, y: 3.5881667, z: -25.59311}
+    m_Target: {x: 28.774368, y: 8.67411, z: -15.06756}
     speed: 2
-    m_Value: {x: 22.375858, y: 3.5881667, z: -25.59311}
+    m_Value: {x: 28.774368, y: 8.67411, z: -15.06756}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -623,13 +623,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.01199686, y: 0.7217733, z: 0.016781103, w: 0.69271773}
+    m_Target: {x: -0.24519674, y: -0.013368358, z: 0.0019745661, w: 0.97009945}
     speed: 2
-    m_Value: {x: -0.011989428, y: 0.7213262, z: 0.016770707, w: 0.6922886}
+    m_Value: {x: -0.24502566, y: -0.013359031, z: 0.0019731885, w: 0.9694226}
   m_Size:
-    m_Target: 7.362798
+    m_Target: 4.5313864
     speed: 2
-    m_Value: 7.362798
+    m_Value: 4.5313864
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -724,21 +724,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Timothy's shit/Textures
+    - Assets/Art/Jemmie/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/Timothy's shit/Textures
+  - Assets/Art/Jemmie/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\timot\OneDrive\Documenten\GitHub\ShortBurn\ShortBurn
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 455.8}
-    m_SelectedIDs: 70900000
-    m_LastClickedID: 36976
+    scrollPos: {x: 0, y: 35.799988}
+    m_SelectedIDs: 2a900000
+    m_LastClickedID: 36906
     m_ExpandedIDs: 00000000b68e0000b88e0000ba8e0000bc8e0000be8e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -792,9 +792,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: b83fffff
-    m_LastClickedInstanceID: -49224
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -819,7 +819,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 162.20001}
+    m_ScrollPosition: {x: 0, y: 158.20001}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
@@ -853,7 +853,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 27370
+  m_LastSelectedObjectID: -49224
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
