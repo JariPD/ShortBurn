@@ -26,6 +26,7 @@ public class Hand : MonoBehaviour
     private float currentCooldown = 0;
     private bool shootBeam = true;
 
+    private bool allowCoroutine = true;
     private float currentRayDistance;
 
     private void Start()
@@ -40,7 +41,11 @@ public class Hand : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0) && shootBeam)
         {
-            StartCoroutine(ShootBeam());
+            if (allowCoroutine)
+            {
+                allowCoroutine = false;
+                StartCoroutine(ShootBeam());
+            }
 
             //starts timer that slowly increases raycast distance
             rayTimer += Time.deltaTime;
@@ -130,6 +135,8 @@ public class Hand : MonoBehaviour
 
             //stops playing beam sound effect
             AudioManager.instance.Stop("Beam");
+
+            allowCoroutine = true;
         }
     }
 
@@ -138,7 +145,7 @@ public class Hand : MonoBehaviour
         //sets animation state
         anim.SetBool("BeamActive", true);
 
-        new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1.6f);
 
         //turns on beam
         beam.SetActive(true);
@@ -148,17 +155,17 @@ public class Hand : MonoBehaviour
 
         //play screenshake effect
         StartCoroutine(CameraShake.instance.Shake(0.15f, .025f));
-
-        yield return null;
     }
 
     IEnumerator beamInterval()
     {
+        allowCoroutine = false;
         shootBeam = false;
         currentCooldown = 0;
 
         yield return new WaitForSeconds(interval);
 
+        allowCoroutine = true;
         shootBeam = true;
     }
 
