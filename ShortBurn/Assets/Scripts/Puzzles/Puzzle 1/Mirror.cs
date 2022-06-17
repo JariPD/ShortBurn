@@ -17,6 +17,7 @@ public class Mirror : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject brokenMirror;
     [SerializeField] private GameObject chairMirror;
+    [SerializeField] private GameObject reflection;
     [SerializeField] private AudioClip[] sounds;
     private GameObject rune;
     private ParticleSystem particle;
@@ -48,6 +49,7 @@ public class Mirror : MonoBehaviour
                     {
                         hit.transform.gameObject.SetActive(false);
 
+                        reflection?.SetActive(true);
                         brokenMirror?.SetActive(true);
                     }
 
