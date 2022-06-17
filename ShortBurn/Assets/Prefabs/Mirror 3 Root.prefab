@@ -425,6 +425,7 @@ MonoBehaviour:
   mirrorIndex: 7
   brokenMirror: {fileID: 0}
   chairMirror: {fileID: 0}
+  reflection: {fileID: 0}
   sounds:
   - {fileID: 8300000, guid: 711c68b8081addd499f99a253acd4061, type: 3}
   - {fileID: 8300000, guid: 67ebddcf67804aa44aea257b3c2a72c4, type: 3}
@@ -553,7 +554,7 @@ Transform:
   m_GameObject: {fileID: 6298774338987593846}
   m_LocalRotation: {x: -0, y: 0.99958706, z: -0, w: -0.028734576}
   m_LocalPosition: {x: 11.702379, y: 3.727268, z: -28.055462}
-  m_LocalScale: {x: 2.8, y: 2.8, z: 2.8}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 11540279545782541}
