@@ -23,9 +23,10 @@ public class Hand : MonoBehaviour
     [Header("Beam cooldown settings")]
     [SerializeField] private float cooldown = 7.5f;
     [SerializeField] private float interval = 3;
-    private float currentCooldown = 0;
+    [SerializeField] private float currentCooldown = 0;
     private bool shootBeam = true;
 
+    private bool shooting = false;
     private bool allowCoroutine = true;
     private float currentRayDistance;
 
@@ -47,11 +48,18 @@ public class Hand : MonoBehaviour
                 StartCoroutine(ShootBeam());
             }
 
-            //starts timer that slowly increases raycast distance
-            rayTimer += Time.deltaTime;
+            if (shooting)
+            {
+                //starts timer that slowly increases raycast distance
+                rayTimer += Time.deltaTime;
 
-            //starts timer that keeps track for how long the beam has been fired
-            currentCooldown += Time.deltaTime;
+                //starts timer that keeps track for how long the beam has been fired
+                currentCooldown += Time.deltaTime;
+            }
+
+            //play screenshake effect
+            if (currentCooldown >= 0.1f)
+                StartCoroutine(CameraShake.instance.Shake(0.1f, .025f));
 
             //starts cooldown if beam is done shooting
             if (currentCooldown >= cooldown)
@@ -120,24 +128,29 @@ public class Hand : MonoBehaviour
                 prism.ActivateLightBeams = false;
         }
         else
-        {
-            //turns off light beams from puzzle 2
-            prism.ActivateLightBeams = false;
+            StopBeam();
+    }
 
-            //sets animation state
-            anim.SetBool("BeamActive", false);
+    private void StopBeam()
+    {
+        shooting = false;
 
-            //turns off the beam
-            beam.SetActive(false);
+        //turns off light beams from puzzle 2
+        prism.ActivateLightBeams = false;
 
-            //resets ray timer
-            rayTimer = 0;
+        //sets animation state
+        anim.SetBool("BeamActive", false);
 
-            //stops playing beam sound effect
-            AudioManager.instance.Stop("Beam");
+        //turns off the beam
+        beam.SetActive(false);
 
-            allowCoroutine = true;
-        }
+        //resets ray timer
+        rayTimer = 0;
+
+        //stops playing beam sound effect
+        AudioManager.instance.Stop("Beam");
+
+        allowCoroutine = true;
     }
 
     IEnumerator ShootBeam()
@@ -145,16 +158,15 @@ public class Hand : MonoBehaviour
         //sets animation state
         anim.SetBool("BeamActive", true);
 
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1.7f);
+
+        shooting = true;
 
         //turns on beam
         beam.SetActive(true);
 
         //beam sound effect
         AudioManager.instance.Play("Beam");
-
-        //play screenshake effect
-        StartCoroutine(CameraShake.instance.Shake(0.15f, .025f));
     }
 
     IEnumerator beamInterval()
