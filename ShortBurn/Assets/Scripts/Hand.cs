@@ -14,6 +14,7 @@ public class Hand : MonoBehaviour
     [SerializeField] private float rayStartDistance = 1;
     [SerializeField] private float rayMaxDistance = 4;
     [SerializeField] private float raySpeed;
+    [SerializeField] private LayerMask layer;
     private float rayTimer;
 
     private RaycastHit hit;
@@ -66,7 +67,7 @@ public class Hand : MonoBehaviour
                 StartCoroutine(beamInterval());
 
             currentRayDistance = Mathf.Lerp(rayStartDistance, rayMaxDistance, rayTimer / raySpeed);
-            if (Physics.Raycast(origin, direction, out hit, currentRayDistance)) //draws a ray going forwards from the object
+            if (Physics.Raycast(origin, direction, out hit, currentRayDistance, layer ,QueryTriggerInteraction.Ignore)) //draws a ray going forwards from the object
             {
                 if (hit.transform.CompareTag("Brick") || hit.transform.CompareTag("DryRack"))
                     hit.transform.GetComponent<MoveObjectPuzzle>().MoveObject = true;
