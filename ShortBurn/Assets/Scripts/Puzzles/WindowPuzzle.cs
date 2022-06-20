@@ -10,7 +10,7 @@ public class WindowPuzzle : MonoBehaviour
     [SerializeField] private GameObject trigger;
 
     [Header("Settings")]
-    [SerializeField] private Vector3 targetPos;
+    [SerializeField] private Quaternion targetRot;
     [SerializeField] private float moveSpeed;
 
 
@@ -18,7 +18,10 @@ public class WindowPuzzle : MonoBehaviour
     {
         if (CloseWindow)
         {
-            window.transform.localPosition = Vector3.MoveTowards(window.transform.localPosition, targetPos, moveSpeed * Time.deltaTime);
+            window.transform.localRotation = Quaternion.RotateTowards(window.transform.localRotation, targetRot, moveSpeed * Time.deltaTime);
+
+            //start animation
+            //start sound effect
 
             rope.SetActive(false);
             trigger.SetActive(false);
