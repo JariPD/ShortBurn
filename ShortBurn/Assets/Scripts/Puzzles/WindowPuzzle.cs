@@ -8,17 +8,19 @@ public class WindowPuzzle : MonoBehaviour
     [SerializeField] private GameObject window;
     [SerializeField] private GameObject rope;
     [SerializeField] private GameObject trigger;
+    private Animator anim;
 
-    [Header("Settings")]
-    [SerializeField] private Quaternion targetRot;
-    [SerializeField] private float moveSpeed;
 
+    private void Start()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
 
     void Update()
     {
         if (CloseWindow)
         {
-            window.transform.localRotation = Quaternion.RotateTowards(window.transform.localRotation, targetRot, moveSpeed * Time.deltaTime);
+            anim.SetTrigger("CloseWindow");
 
             //start animation
             //start sound effect
