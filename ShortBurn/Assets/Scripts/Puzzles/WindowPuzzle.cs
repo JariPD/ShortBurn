@@ -20,13 +20,16 @@ public class WindowPuzzle : MonoBehaviour
     {
         if (CloseWindow)
         {
+            //start animation
             anim.SetTrigger("CloseWindow");
 
-            //start animation
             //start sound effect
+            AudioManager.instance.Play("WindowSlam");
 
             rope.SetActive(false);
             trigger.SetActive(false);
+
+            CloseWindow = false;
         }
     }
 }
