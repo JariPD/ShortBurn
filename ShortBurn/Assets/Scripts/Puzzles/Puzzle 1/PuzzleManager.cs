@@ -5,7 +5,7 @@ public class PuzzleManager : MonoBehaviour
 {
     public static PuzzleManager instance;
 
-    [SerializeField] private MoveObjectPuzzle door;
+    [SerializeField] private DoorController door;
     [SerializeField] private ParticleSystem particle;
 
     [Header("Settings")]
