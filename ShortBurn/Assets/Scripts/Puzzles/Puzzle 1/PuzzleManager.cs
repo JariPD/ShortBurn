@@ -5,7 +5,7 @@ public class PuzzleManager : MonoBehaviour
 {
     public static PuzzleManager instance;
 
-    [SerializeField] private MoveObjectPuzzle door;
+    [SerializeField] private DoorController door;
     [SerializeField] private ParticleSystem particle;
 
     [Header("Settings")]
@@ -13,6 +13,7 @@ public class PuzzleManager : MonoBehaviour
 
     private Collider col;
     private bool coroutineAllowed = true;
+    private bool winBool = true;
     private float timer;
 
     private void Awake()
@@ -25,13 +26,43 @@ public class PuzzleManager : MonoBehaviour
     private void Update()
     {
         //win condition
-        if (AmountActive >= 6 && coroutineAllowed)
-            StartCoroutine(Win());
+        if (AmountActive >= 6 && winBool)
+            Win();
     }
 
-    IEnumerator Win()
+    private void OnTriggerStay(Collider other)
     {
-        coroutineAllowed = false;
+        if (other.gameObject.CompareTag("player") && AmountActive >= 6)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= 0.1 && timer <= 4.8 && coroutineAllowed)
+                StartCoroutine(OpenDoor());
+
+            //plays a glass breaking sound effect after opening the door
+            if (timer >= 1 && timer <= 2)
+                AudioManager.instance.Play("Glass Break");
+
+            if (timer >= 4.8)
+            {
+                //plays voiceover for puzzle 2
+                AudioManager.instance.Play("Voiceover 2");
+
+                //moves player to next area
+                StartCoroutine(SpawnPoints.instance.SpawnPlayer());
+
+                //turns off collider so player cant go back in
+                col.enabled = false;
+
+                //closes the door
+                StartCoroutine(CloseDoor());
+            }
+        }
+    }
+
+    public void Win()
+    {
+        winBool = false;
 
         //plays big fireball particle
         particle.Play();
@@ -41,47 +72,46 @@ public class PuzzleManager : MonoBehaviour
 
         //turn on text that say "Go to the middle of the circle"
         StartCoroutine(UIManager.instance.StayInCenter());
-
-        yield return null;
     }
 
-    private void OnTriggerStay(Collider other)
+    IEnumerator OpenDoor()
     {
-        if (other.gameObject.CompareTag("player") && AmountActive >= 6)
-        {
-            timer += Time.deltaTime;
+        coroutineAllowed = false;
 
-            if (timer >= 0.1 && timer <= 4.8)
-            {
-                //plays sound effect
-                AudioManager.instance.Play("Stone Door Opening");
+        //plays sound effect
+        AudioManager.instance.Play("Stone Door Opening");
 
-                //open door to next area
-                door.MoveObject = true;
+        //load cell 2-3
+        CellLoader.instance.LoadCell();
 
-                //screen shake to indicate something is moving
-                StartCoroutine(CameraShake.instance.Shake(.5f, 0.04f));
-            }
+        //open door to next area
+        door.MoveObject = true;
 
-            //plays a glass breaking sound effect after opening the door
-            if (timer >= 1 && timer <= 2)
-                AudioManager.instance.Play("Glass Break");
+        //screen shake to indicate something is moving
+        StartCoroutine(CameraShake.instance.Shake(4.5f, 0.04f));
 
-            if (timer >= 4.8)
-            {
-                timer = 0;
+        yield break;
+    }
 
-                //plays voiceover for puzzle 2
-                AudioManager.instance.Play("Voiceover 2");
+    IEnumerator CloseDoor()
+    {
+        yield return new WaitForSeconds(3.5f);
+        
+        //plays sound effect
+        AudioManager.instance.Play("Stone Door Opening");
 
-                //moves player to next area
-                StartCoroutine(SpawnPoints.instance.SpawnPlayer());
+        //close door to previous area
+        door.MoveObject = false;
+        door.ResetDoor = true;
 
-                //MovePlayerToNextArea.instance.MovePlayer = true;
+        //screen shake to indicate something is moving
+        StartCoroutine(CameraShake.instance.Shake(4.5f, 0.04f));
 
-                //turns off collider so player cant go back in
-                col.enabled = false;
-            }
-        }
+        new WaitForSeconds(2);
+
+        //unload cell 1
+        CellLoader.instance.UnloadCell();
+
+        yield break;
     }
 }
