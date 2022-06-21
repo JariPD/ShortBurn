@@ -7,14 +7,18 @@ public class MoveObjectPuzzle : MonoBehaviour
     [SerializeField] private Quaternion targetRot;
     [SerializeField] private float rotSpeed;
     [SerializeField] private float moveSpeed;
+    private Vector3 resetPos;
 
     public bool MoveObject;
+    public bool ResetDoor;
 
     private AudioSource audioSource;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        resetPos = transform.localPosition;
     }
 
     void Update()
@@ -34,6 +38,10 @@ public class MoveObjectPuzzle : MonoBehaviour
         {
             transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRot, rotSpeed * Time.deltaTime);
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, moveSpeed * Time.deltaTime);
+        }
+        else if (ResetDoor)
+        {
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, resetPos, moveSpeed * Time.deltaTime);
         }
     }
 }
