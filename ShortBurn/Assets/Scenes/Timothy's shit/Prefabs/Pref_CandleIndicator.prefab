@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 8116050168458902102}
   - component: {fileID: 5119989375831307763}
   - component: {fileID: 6983161608472232249}
+  - component: {fileID: 7884981621892293672}
   m_Layer: 0
   m_Name: Pref_CandleIndicator
   m_TagString: Untagged
@@ -249,7 +250,7 @@ Transform:
   m_Children:
   - {fileID: 769551908843816463}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5119989375831307763
 MeshFilter:
@@ -301,3 +302,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7884981621892293672
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8928896487212818668}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16167438, y: 0.29643184, z: 0.1570879}
+  m_Center: {x: 0, y: 0, z: 0}
