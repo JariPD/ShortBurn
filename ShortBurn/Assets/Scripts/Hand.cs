@@ -67,7 +67,7 @@ public class Hand : MonoBehaviour
                 StartCoroutine(beamInterval());
 
             currentRayDistance = Mathf.Lerp(rayStartDistance, rayMaxDistance, rayTimer / raySpeed);
-            if (Physics.Raycast(origin, direction, out hit, currentRayDistance, layer ,QueryTriggerInteraction.Ignore)) //draws a ray going forwards from the object
+            if (Physics.Raycast(origin, direction, out hit, currentRayDistance, layer, QueryTriggerInteraction.Ignore)) //draws a ray going forwards from the object
             {
                 if (hit.transform.CompareTag("Brick") || hit.transform.CompareTag("DryRack"))
                     hit.transform.GetComponent<MoveObjectPuzzle>().MoveObject = true;
@@ -109,7 +109,7 @@ public class Hand : MonoBehaviour
                 {
                     burnTimer += Time.deltaTime;
 
-                    //Mathf.Lerp(hit.transform.GetComponent<MeshRenderer>().material.color.a, 0, burnTimer);
+                    hit.transform.GetComponentInChildren<ParticleSystem>().Play();
 
                     if (burnTimer >= 1)
                     {
