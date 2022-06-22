@@ -72,7 +72,7 @@ MonoBehaviour:
   m_VSyncEnabled: 0
   m_PlayFocused: 0
   m_Gizmos: 0
-  m_Stats: 0
+  m_Stats: 1
   m_SelectedSizes: 03000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
@@ -230,10 +230,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
+      scrollPos: {x: 0, y: 1670}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 968cf5ffc4f4f5ff8a4ef6ff80abf6ff8822f7ffb290f7ff6aaef7ffdee5f7ffbe41f8ff7a9ef8ff0256f9ffaae0f9ffb4e0f9ffb8e0f9ff70e1f9ff04faf9ffe65afafffcf8faffe211fbff3a4dfbff3c93fbff4093fbffbaa8fbff9e18fcff581bfcff6c1bfcfffe1bfcff2a1cfcff2c1cfcff9a1cfcffd61cfcfff61cfcff2c1dfcff5a1dfcff2c1efcff321efcff401efcff481efcff8c1efcff3e1ffcff7420fcff3c21fcff5021fcffbc23fcfff62bfcff2431fcff788bfcff188dfcff42e7fcff7a46fdff8446fdff8846fdff0684fdffeedffdff0c3afeff2a94feff44f3feff586bffff646bffff6e6bffff786bffff866bffff906bffff9e6bffff0072ffff3885ffff06fbffff686b00006e7100000a770000fc780000462001003ce60100e2f30100ccf50100720302002026030024260300003503007c3603000a390300f23903005c3a0300dc0804001e3b0400ae480400f01a060006290600c8ad0800
+      m_ExpandedIDs: 9a7af4ffacc5f4ff968cf5ffc4f4f5ff8a4ef6ff80abf6ff8822f7ffb290f7ff6aaef7ffdee5f7ffbe41f8ff7a9ef8ff0256f9ffaae0f9ffb4e0f9ffb8e0f9ff70e1f9ff04faf9ffe65afafffcf8faffe211fbff3a4dfbff3c93fbff4093fbffbaa8fbff9e18fcff581bfcff6c1bfcfffe1bfcff2a1cfcff2c1cfcff9a1cfcffd61cfcfff61cfcff2c1dfcff5a1dfcff2c1efcff321efcff401efcff481efcff8c1efcff3e1ffcff7420fcff3c21fcff5021fcffbc23fcfff62bfcff2431fcff788bfcff188dfcff42e7fcff7a46fdff8446fdff8846fdff0684fdffeedffdff0c3afeff2a94feff44f3feff586bffff646bffff6e6bffff786bffff866bffff906bffff9e6bffff0072ffff3885ffff06fbffff686b00006e7100000a770000fc780000462001003ce60100e2f30100ccf50100720302002026030024260300003503007c3603000a390300f23903005c3a0300dc0804001e3b0400ae480400f01a060006290600c8ad0800c0490900ee4f09005c590900
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -576,9 +576,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -78.818436, y: -1.1528783, z: 4.1859264}
+    m_Target: {x: 40.89364, y: 0.85280967, z: -29.312286}
     speed: 2
-    m_Value: {x: -78.818436, y: -1.1528783, z: 4.1859264}
+    m_Value: {x: 40.89364, y: 0.85280967, z: -29.312286}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -624,13 +624,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.020233456, y: 0.58467215, z: -0.025253609, w: -0.8120826}
+    m_Target: {x: 0.23949178, y: -0.02413183, z: 0.019772366, w: 0.9716274}
     speed: 2
-    m_Value: {x: -0.020209555, y: 0.5839815, z: -0.025223777, w: -0.8111233}
+    m_Value: {x: 0.23920617, y: -0.024103051, z: 0.019748786, w: 0.9704687}
   m_Size:
-    m_Target: 46.546093
+    m_Target: 4.1270466
     speed: 2
-    m_Value: 46.546093
+    m_Value: 4.1270466
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -794,7 +794,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: 
+    m_NameFilter: earth
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -806,21 +806,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Timothy's shit/Prefabs
+    - Assets/Scenes/Timothy's shit/Textures
     m_Globs: []
-    m_OriginalText: 
+    m_OriginalText: earth
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/Timothy's shit/Prefabs
+  - Assets/Scenes/Timothy's shit/Textures
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\timot\OneDrive\Documenten\GitHub\ShortBurn\ShortBurn
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 367}
-    m_SelectedIDs: 94990000
-    m_LastClickedID: 39316
+    m_SelectedIDs: 96990000
+    m_LastClickedID: 39318
     m_ExpandedIDs: 000000004498000046980000489800004a9800004c98000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
