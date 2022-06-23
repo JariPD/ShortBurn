@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RuneManager : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class RuneManager : MonoBehaviour
 
     public int AmountActive;
 
+    [SerializeField] private UnityEvent winEvent;
     [SerializeField] private GameObject winPanel;
 
 
@@ -14,7 +16,6 @@ public class RuneManager : MonoBehaviour
     {
         instance = this;
     }
-
 
     private void Update()
     {
@@ -27,24 +28,16 @@ public class RuneManager : MonoBehaviour
         if (other.gameObject.CompareTag("player"))
         {
             if (AmountActive == 5)
-                StartCoroutine(Win());
+                Win();
         }
     }
 
-    IEnumerator Win()
+    public void Win()
     {
         //locks player
         LockPlayer.instance.LockAll();
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
         //play win cutscene
-
-        //activates win panel
-        winPanel.SetActive(true);
-
-        yield return null;
+        winEvent.Invoke();
     }
-
 }
