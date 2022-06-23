@@ -47,11 +47,12 @@ public class Hand : MonoBehaviour
             burnTimer += Time.deltaTime;
 
             //checks if object needs to be turned off
-            if (burnTimer >= 1)
+            if (burnTimer >= 1.5f)
             {
                 hit.transform.gameObject.SetActive(false);
 
                 burnTimer = 0;
+                burning = false;
             }
         }
 
