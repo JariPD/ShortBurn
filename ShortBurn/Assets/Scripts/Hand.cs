@@ -19,7 +19,8 @@ public class Hand : MonoBehaviour
 
     private RaycastHit hit;
     private float boilTimer = 0;
-    private float burnTimer = 0;
+    [SerializeField]private float burnTimer = 0;
+    private bool burning = false;
 
     [Header("Beam cooldown settings")]
     [SerializeField] private float cooldown = 7.5f;
@@ -40,6 +41,19 @@ public class Hand : MonoBehaviour
     {
         Vector3 origin = transform.position;                               //origin of the ray
         Vector3 direction = transform.TransformDirection(Vector3.forward); //direction for the ray
+
+        if (burning)
+        {
+            burnTimer += Time.deltaTime;
+
+            //checks if object needs to be turned off
+            if (burnTimer >= 1)
+            {
+                hit.transform.gameObject.SetActive(false);
+
+                burnTimer = 0;
+            }
+        }
 
         if (Input.GetKey(KeyCode.Mouse0) && shootBeam)
         {
@@ -107,16 +121,10 @@ public class Hand : MonoBehaviour
 
                 if (hit.transform.CompareTag("Burnable"))
                 {
-                    burnTimer += Time.deltaTime;
+                    burning = true;
 
+                    //plays particle
                     hit.transform.GetComponentInChildren<ParticleSystem>().Play();
-
-                    if (burnTimer >= 1)
-                    {
-                        hit.transform.gameObject.SetActive(false);
-
-                        burnTimer = 0;
-                    }
                 }
 
                 if (hit.transform.CompareTag("Prism"))
