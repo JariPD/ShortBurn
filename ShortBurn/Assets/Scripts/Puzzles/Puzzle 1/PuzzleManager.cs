@@ -81,11 +81,11 @@ public class PuzzleManager : MonoBehaviour
         //plays sound effect
         AudioManager.instance.Play("Stone Door Opening");
 
-        //load cell 2-3
-        CellLoader.instance.LoadCell();
-
         //open door to next area
         door.MoveObject = true;
+
+        //load cell 2-3
+        CellLoader.instance.LoadCell();
 
         //screen shake to indicate something is moving
         StartCoroutine(CameraShake.instance.Shake(4.5f, 0.04f));
