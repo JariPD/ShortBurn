@@ -96,7 +96,7 @@ public class PuzzleManager : MonoBehaviour
     IEnumerator CloseDoor()
     {
         yield return new WaitForSeconds(3.5f);
-        
+
         //plays sound effect
         AudioManager.instance.Play("Stone Door Opening");
 
