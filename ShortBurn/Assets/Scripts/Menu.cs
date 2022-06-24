@@ -3,6 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    public void StartCutscene()
+    {
+        SceneManager.LoadScene(4);
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(1);

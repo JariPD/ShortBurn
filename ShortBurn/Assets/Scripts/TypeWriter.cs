@@ -1,11 +1,11 @@
-using System;
+/*using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class DialogueSystem : MonoBehaviour
 {
-    public DialogueSO Messages;
+    //public DialogueSO Messages;
 
     public TextMeshProUGUI dialogueText;
 
@@ -130,4 +130,4 @@ public class DialogueSystem : MonoBehaviour
 
         return false;
     }
-}
+}*/

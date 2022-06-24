@@ -45,14 +45,15 @@ public class PuzzleManager : MonoBehaviour
 
             if (timer >= 4.8)
             {
-                //plays voiceover for puzzle 2
-                AudioManager.instance.Play("Voiceover 2");
-
                 //moves player to next area
                 StartCoroutine(SpawnPoints.instance.SpawnPlayer());
 
                 //turns off collider so player cant go back in
                 col.enabled = false;
+
+
+                //plays voiceover for puzzle 2
+                AudioManager.instance.Play("Voiceover 2");
 
                 //closes the door
                 StartCoroutine(CloseDoor());

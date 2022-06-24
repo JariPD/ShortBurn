@@ -13,4 +13,9 @@ public class Cutscene : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
