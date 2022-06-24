@@ -19,7 +19,7 @@ public class Hand : MonoBehaviour
 
     private RaycastHit hit;
     private float boilTimer = 0;
-    [SerializeField]private float burnTimer = 0;
+    [SerializeField] private float burnTimer = 0;
     private bool burning = false;
 
     [Header("Beam cooldown settings")]
@@ -85,7 +85,7 @@ public class Hand : MonoBehaviour
             if (Physics.Raycast(origin, direction, out hit, currentRayDistance, layer, QueryTriggerInteraction.Ignore)) //draws a ray going forwards from the object
             {
                 if (hit.transform.CompareTag("Brick") || hit.transform.CompareTag("DryRack"))
-                    hit.transform.GetComponent<MoveObjectPuzzle>().MoveObject = true;
+                    hit.transform.GetComponentInParent<MoveObjectPuzzle>().MoveObject = true;
 
                 if (hit.transform.CompareTag("Rope"))
                 {
