@@ -51,12 +51,12 @@ public class PuzzleManager : MonoBehaviour
                 //turns off collider so player cant go back in
                 col.enabled = false;
 
-
                 //plays voiceover for puzzle 2
                 AudioManager.instance.Play("Voiceover 2");
 
                 //closes the door
                 StartCoroutine(CloseDoor());
+
             }
         }
     }
@@ -67,9 +67,6 @@ public class PuzzleManager : MonoBehaviour
 
         //plays big fireball particle
         particle.Play();
-
-        //set the next checkpoint for respawning
-        SpawnPoints.instance.CheckPoint += 1;
 
         //turn on text that say "Go to the middle of the circle"
         StartCoroutine(UIManager.instance.StayInCenter());
@@ -97,6 +94,9 @@ public class PuzzleManager : MonoBehaviour
     IEnumerator CloseDoor()
     {
         yield return new WaitForSeconds(3.5f);
+
+        //set the next checkpoint for respawning
+        SpawnPoints.instance.CheckPoint += 1;
 
         //plays sound effect
         AudioManager.instance.Play("Stone Door Opening");
