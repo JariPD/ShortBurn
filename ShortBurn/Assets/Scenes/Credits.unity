@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 97.20517, g: 52.242523, b: 125.79407, a: 1}
+  m_IndirectSpecularColor: {r: 97.26642, g: 52.383392, b: 125.881714, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 494957750}
+      - m_Target: {fileID: 1226457415}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: BackToMenu
         m_Mode: 1
@@ -14447,7 +14447,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 494957749}
-  - component: {fileID: 494957750}
   m_Layer: 5
   m_Name: CreditsPanel
   m_TagString: Untagged
@@ -14476,18 +14475,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &494957750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 494957748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 701b9d4335f896f4491852ee95ae951f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &509961467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34284,6 +34271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1226457413}
   - component: {fileID: 1226457414}
+  - component: {fileID: 1226457415}
   m_Layer: 5
   m_Name: Credits parent
   m_TagString: Untagged
@@ -34346,6 +34334,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1226457415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226457412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701b9d4335f896f4491852ee95ae951f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1241409243
 GameObject:
   m_ObjectHideFlags: 0
