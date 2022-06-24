@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 97.2074, g: 52.232697, b: 125.80469, a: 1}
+  m_IndirectSpecularColor: {r: 97.29379, g: 52.447784, b: 126.024536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24937,6 +24937,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AmountActive: 0
+  winEvent:
+    m_PersistentCalls:
+      m_Calls: []
   winPanel: {fileID: 0}
 --- !u!135 &708460197
 SphereCollider:
@@ -26571,7 +26574,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1891494496}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -57181,7 +57184,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1891494496}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -67775,7 +67778,6 @@ GameObject:
   - component: {fileID: 1891494499}
   - component: {fileID: 1891494498}
   - component: {fileID: 1891494497}
-  - component: {fileID: 1891494496}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -67783,18 +67785,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1891494496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891494495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 701b9d4335f896f4491852ee95ae951f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1891494497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75921,6 +75911,7 @@ GameObject:
   - component: {fileID: 6468335976323635179}
   - component: {fileID: 1723191039649513389}
   - component: {fileID: 6468335976323635180}
+  - component: {fileID: 6468335976323635181}
   m_Layer: 0
   m_Name: Brimfire_Failure
   m_TagString: Untagged
@@ -75971,3 +75962,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6468335976323635181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3870841440599564843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce5d1c14e095e5448a5db748205bc5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
