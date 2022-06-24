@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 96.17175, g: 54.799103, b: 130.94617, a: 1}
+  m_IndirectSpecularColor: {r: 97.257904, g: 52.33658, b: 125.76782, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Concept Artist ~~~~~ Nieke Dijst
+  m_text: 2D/Concept Artist ~~~~~ Nieke Dijst
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90462cfd7a693764c826ed062362db48, type: 2}
   m_sharedMaterial: {fileID: -680965811448276092, guid: 90462cfd7a693764c826ed062362db48, type: 2}
@@ -4144,7 +4144,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1169758
+  m_Name: pb_Mesh168286
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -8460,7 +8460,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1168648
+  m_Name: pb_Mesh167166
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -19594,7 +19594,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1169436
+  m_Name: pb_Mesh167962
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -21596,7 +21596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3D Modeler ~~~~~ Timothy ter Burg
+  m_text: 3D Artist ~~~~~ Timothy ter Burg
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90462cfd7a693764c826ed062362db48, type: 2}
   m_sharedMaterial: {fileID: -680965811448276092, guid: 90462cfd7a693764c826ed062362db48, type: 2}
@@ -43756,7 +43756,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1169330
+  m_Name: pb_Mesh167848
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -44641,7 +44641,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1170224
+  m_Name: pb_Mesh168756
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -59476,7 +59476,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1170434
+  m_Name: pb_Mesh168966
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -64110,7 +64110,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3D Modeler ~~~~~ Jeremy Woesthoff
+  m_text: 3D Artist ~~~~~ Jeremy Woesthoff
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90462cfd7a693764c826ed062362db48, type: 2}
   m_sharedMaterial: {fileID: -680965811448276092, guid: 90462cfd7a693764c826ed062362db48, type: 2}
@@ -73872,7 +73872,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1170236
+  m_Name: pb_Mesh168768
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
