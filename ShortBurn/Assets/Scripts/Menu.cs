@@ -3,17 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    private void Start()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    private void Update()
-    {
-        
-    }
-
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -36,6 +25,11 @@ public class Menu : MonoBehaviour
     public void LoadEndCutscene()
     {
         SceneManager.LoadScene(2);
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
 
