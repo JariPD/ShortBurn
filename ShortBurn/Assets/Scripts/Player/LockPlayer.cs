@@ -9,6 +9,7 @@ public class LockPlayer : MonoBehaviour
     public Sway Sway;
     public Hand Hand;
     public CharacterController CharacterController;
+    public GameObject BeamParticle;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class LockPlayer : MonoBehaviour
         Sway.enabled = false;
         Hand.enabled = false;
         CharacterController.enabled = false;
+        BeamParticle.SetActive(false);
     }
 
     public void UnlockAll()
@@ -31,5 +33,6 @@ public class LockPlayer : MonoBehaviour
         Sway.enabled = true;
         Hand.enabled = true;
         CharacterController.enabled = true;
+        BeamParticle.SetActive(true);
     }
 }
