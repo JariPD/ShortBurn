@@ -45,6 +45,8 @@ public class PuzzleManager : MonoBehaviour
 
             if (timer >= 4.8)
             {
+                timer = 0;
+
                 //moves player to next area
                 StartCoroutine(SpawnPoints.instance.SpawnPlayer());
 
@@ -54,9 +56,11 @@ public class PuzzleManager : MonoBehaviour
                 //plays voiceover for puzzle 2
                 AudioManager.instance.Play("Voiceover 2");
 
+                //set the next checkpoint for respawning
+                SpawnPoints.instance.CheckPoint += 1;
+
                 //closes the door
                 StartCoroutine(CloseDoor());
-
             }
         }
     }
@@ -93,10 +97,9 @@ public class PuzzleManager : MonoBehaviour
 
     IEnumerator CloseDoor()
     {
-        yield return new WaitForSeconds(3.5f);
+        StartCoroutine(UIManager.instance.ShowRestartImage());
 
-        //set the next checkpoint for respawning
-        SpawnPoints.instance.CheckPoint += 1;
+        yield return new WaitForSeconds(3.5f);
 
         //plays sound effect
         AudioManager.instance.Play("Stone Door Opening");
