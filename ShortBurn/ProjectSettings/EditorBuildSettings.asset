@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 91c1856f8d34d9d4b9314931fe278a2b
+  - enabled: 1
+    path: Assets/Scenes/Timothy's shit/Scenes/Intro.unity
+    guid: b3479a671c9e6aa40b7422324d941b63
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 302f4b96f60870b4aaa4f0d4a5896681, type: 2}

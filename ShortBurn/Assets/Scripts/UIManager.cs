@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public bool IsPaused;
     public bool ObjectSelected;
 
+    public GameObject RestartImage;
     [SerializeField] private TextMeshProUGUI stayInCenterText;
     [SerializeField] private TextMeshProUGUI moveToCenterText;
     [SerializeField] private GameObject pauseMenu;
@@ -26,6 +27,8 @@ public class UIManager : MonoBehaviour
         //locks cursor and makes it invisible
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        StartCoroutine(StartingCoroutine());
     }
 
     void Update()
@@ -87,5 +90,25 @@ public class UIManager : MonoBehaviour
 
             moveToCenterText.enabled = false;
         }
+    }
+
+    IEnumerator StartingCoroutine()
+    {
+        yield return new WaitForSeconds(25);
+
+        StartCoroutine(ShowRestartImage());
+
+        yield break;
+    }
+
+    public IEnumerator ShowRestartImage()
+    {
+        RestartImage.SetActive(true);
+
+        yield return new WaitForSeconds(5);
+
+        RestartImage.SetActive(false);
+
+        yield break;
     }
 }

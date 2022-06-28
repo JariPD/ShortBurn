@@ -24,7 +24,7 @@ public class BoilingPuzzle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("player"))
+        if (other.gameObject.CompareTag("player") && IsBoiling)
         {
             LockPlayer.instance.FpsController.enabled = false;
             LockPlayer.instance.CharacterController.enabled = false;

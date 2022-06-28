@@ -45,14 +45,19 @@ public class PuzzleManager : MonoBehaviour
 
             if (timer >= 4.8)
             {
-                //plays voiceover for puzzle 2
-                AudioManager.instance.Play("Voiceover 2");
+                timer = 0;
 
                 //moves player to next area
                 StartCoroutine(SpawnPoints.instance.SpawnPlayer());
 
                 //turns off collider so player cant go back in
                 col.enabled = false;
+
+                //plays voiceover for puzzle 2
+                AudioManager.instance.Play("Voiceover 2");
+
+                //set the next checkpoint for respawning
+                SpawnPoints.instance.CheckPoint += 1;
 
                 //closes the door
                 StartCoroutine(CloseDoor());
@@ -66,9 +71,6 @@ public class PuzzleManager : MonoBehaviour
 
         //plays big fireball particle
         particle.Play();
-
-        //set the next checkpoint for respawning
-        SpawnPoints.instance.CheckPoint += 1;
 
         //turn on text that say "Go to the middle of the circle"
         StartCoroutine(UIManager.instance.StayInCenter());
@@ -95,6 +97,8 @@ public class PuzzleManager : MonoBehaviour
 
     IEnumerator CloseDoor()
     {
+        StartCoroutine(UIManager.instance.ShowRestartImage());
+
         yield return new WaitForSeconds(3.5f);
 
         //plays sound effect

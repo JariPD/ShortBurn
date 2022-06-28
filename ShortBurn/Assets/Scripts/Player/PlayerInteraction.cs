@@ -140,10 +140,6 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-
-
-
-
 #if (UNITY_EDITOR)
     private void OnDrawGizmos()
     {

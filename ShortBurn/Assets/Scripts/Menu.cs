@@ -3,6 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    public void StartCutscene()
+    {
+        SceneManager.LoadScene(4);
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -30,6 +35,11 @@ public class Menu : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
 
