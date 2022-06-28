@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    //[SerializeField] private LayerMask layerToHit;
     [Header("References")]
     [SerializeField] private GameObject beam;
     [SerializeField] private Prism prism;
@@ -16,17 +15,17 @@ public class Hand : MonoBehaviour
     [SerializeField] private float raySpeed;
     [SerializeField] private LayerMask layer;
     private float rayTimer;
-
     private RaycastHit hit;
-    private float boilTimer = 0;
-    [SerializeField] private float burnTimer = 0;
-    private bool burning = false;
 
     [Header("Beam cooldown settings")]
     [SerializeField] private float cooldown = 7.5f;
     [SerializeField] private float interval = 3;
     [SerializeField] private float currentCooldown = 0;
     private bool shootBeam = true;
+
+    private float burnTimer = 0;
+    private float boilTimer = 0;
+    private bool burning = false;
 
     private bool shooting = false;
     private bool allowCoroutine = true;
@@ -202,6 +201,8 @@ public class Hand : MonoBehaviour
         sounds[0].Play();
 
         yield return new WaitForSeconds(3);
+
+
 
         //plays boiling sfx
         sounds[1].Play();
